@@ -1,2 +1,4 @@
 Aqui en español parfavar
 ok
+probando_funcion de merge,pull,push
+
