@@ -1,13 +1,12 @@
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+import AdminSidebar from '@/components/admin/AdminSidebar';
+
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="admin-layout">
-      <h2>Panel de Administración</h2>
-      <nav>{/* Menú de admin */}</nav>
-      {children}
+    <div className="d-flex">
+      <AdminSidebar />
+      <div className="flex-grow-1 p-4">
+        {children}
+      </div>
     </div>
-  )
+  );
 }
