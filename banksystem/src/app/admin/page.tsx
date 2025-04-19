@@ -6,5 +6,5 @@ export default function AdminPage() {
         Desde aquí puedes gestionar los usuarios, cuentas y movimientos del sistema. Usa el menú lateral para navegar entre las secciones.
       </p>
     </div>
-  )
+  );
 }
