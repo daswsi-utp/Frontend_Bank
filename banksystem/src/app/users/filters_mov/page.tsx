@@ -1,7 +1,7 @@
 export default function MovementFilters() {
   return (
     <div>
-      <h3>Filtros de Movimientos</h3>
+      <h3>Filtros de modi</h3>
       <form>
         <div>
           <label>Fecha desde:</label>
