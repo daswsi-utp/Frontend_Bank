@@ -1,0 +1,9 @@
+DETALLES EN LA PRODUCCIÓN DE LOGIN EN NEXT.JS
+-ERRORES:
+	-Hay problema constante en la instalación de Tailwind dentro del proyecto, no permite manejar CSS de mejor forma
+	-Hay errores en la compilación de carpetas
+	-La inicialización se ha visto interrumpida constantes veces por errores con postcss.config.mjs y tailwind.config.js
+	 este ultimo siendo agregado manualmente en búsqueda de una solución al error, pero obteniendo resultados peores
+-Es posible que se requiera reestructurar el proyecto Next de inicio para procurar que se de bien el uso de Tailwind o 
+recurrir a otras herramientas.
+-Resultados hasta ahora: Frontend de login, no tiene CSS por fallos en Tailwind  sin resolver.
