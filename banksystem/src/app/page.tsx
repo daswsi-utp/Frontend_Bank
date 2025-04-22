@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <>
     <Head>
-      <title></title>
-      <meta name="description" content="Landing Page Dev Space" />
+      <title>BanckNet</title>
+      <meta name="description" content="BanckNet" />
     </Head>
 
     <div className="yeo-slogan">
