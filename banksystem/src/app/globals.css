@@ -222,3 +222,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* global.css */
+body {
+  @apply bg-[#5a5555] text-[#0f0954]; 
+}

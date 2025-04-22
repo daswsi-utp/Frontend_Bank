@@ -1,5 +1,5 @@
 "use client"
-
+import React from 'react'
 import { z } from 'zod'
 import { loginSchema } from '@/lib/zod'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
+// Importando el módulo CSS
+import styles from './form-login.module.css'
+
 const FormLogin = () => {
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -30,9 +33,9 @@ const FormLogin = () => {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto px-4">
+    <div className={styles.container}>
       {/* Título y subtítulo */}
-      <h1 className="text-3xl font-bold text-center mb-2">Bienvenido al Sistema Bancario</h1>
+      <h1 className={styles.title}>Bienvenido al Sistema Bancario</h1>
       <p className="text-center text-gray-600 mb-6">Antes de comenzar, debe ingresar su cuenta</p>
 
       <Form {...form}>
@@ -42,15 +45,15 @@ const FormLogin = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xl">Correo Electrónico</FormLabel>
+                <FormLabel className="text-xl font-bold">Correo Electrónico</FormLabel> {/* Título en negrita */}
                 <FormControl>
                   <Input
-                    className="text-lg py-5 px-6 w-full border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className={`${styles.input} text-lg py-5 px-6 w-full border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     placeholder="Ingrese su correo electrónico..."
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className={styles.error}>{form.formState.errors.email?.message}</FormMessage> {/* Error de email */}
               </FormItem>
             )}
           />
@@ -59,34 +62,32 @@ const FormLogin = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-xl">Contraseña</FormLabel>
+                <FormLabel className="text-xl font-bold">Contraseña</FormLabel> {/* Título en negrita */}
                 <FormControl>
                   <Input
                     type="password"
-                    className="text-lg py-5 px-6 w-full border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className={`${styles.input} text-lg py-5 px-6 w-full border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     placeholder="Ingrese su contraseña..."
                     {...field}
                   />
                 </FormControl>
-                <FormMessage />
+                <FormMessage className={styles.error}>{form.formState.errors.password?.message}</FormMessage> {/* Error de password */}
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full py-4 text-lg">
+
+          <Button className={styles.button} type="submit">
             Iniciar Sesión
           </Button>
 
-          {/* Enlace de Recuperar Contraseña */}
-          <div className="flex justify-center mt-4">
-            <a href="#" className="text-blue-600 underline text-lg">
+          <div className={styles.links}>
+            <a href="#" className={styles.link}>
               ¿Olvidaste tu contraseña?
             </a>
           </div>
-
-          {/* Enlace de Registro */}
-          <div className="flex justify-center mt-2 text-lg text-gray-700">
+          <div className={styles.links}>
             <span>¿No tiene cuenta aún? </span>
-            <a href="#" className="text-blue-600 underline ml-1">Registrarse</a>
+            <a href="#" className={styles.link}>Registrarse</a>
           </div>
         </form>
       </Form>
