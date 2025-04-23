@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import '../styleRegister.css'; 
 
 export default function RegisterStep2() {
   const [selectedDepartment, setSelectedDepartment] = useState<string>('');
@@ -222,7 +223,13 @@ export default function RegisterStep2() {
             <button
               className="class_boton"
               type="button"
-              onClick={handleSubmit}
+              onClick={() => {
+                if (termsAccepted) {
+                  window.location.href = '/start/create_account';
+                } else {
+                  alert('Por favor, acepte los términos.');
+                }
+              }}
             >
               Abrir cuenta
             </button>

@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import '../styleRegister.css'; 
+
 
 export default function RegisterStep1() {
   const [selectedCurrency, setSelectedCurrency] = useState<string | null>(null);
@@ -127,13 +129,14 @@ export default function RegisterStep1() {
 
           {/* Botón Siguiente */}
           <div style={{ textAlign: 'center' }}>
-            <button
-              className="class_boton"
-              type="button"
-              onClick={() => (window.location.href = 'Registro2.html')}
-            >
-              Siguiente
-            </button>
+          <button
+            className="class_boton"
+            type="button"
+            onClick={() => (window.location.href = '/start/create_account/pag3')}
+          >
+            Siguiente
+          </button>
+
           </div>
         </form>
         <br />

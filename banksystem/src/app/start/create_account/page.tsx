@@ -107,7 +107,7 @@ export default function RegisterPage() {
                 className="class_boton"
                 type="button"
                 onClick={() => {
-                  window.location.href = '/start/create_account/page2';
+                  window.location.href = '/start/create_account/pag2';
                 }}
               >
                 Siguiente
