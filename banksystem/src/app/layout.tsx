@@ -5,8 +5,11 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Nombre de la App',
+  title: 'BankNet',
   description: 'Descripción de la aplicación',
+  icons: {
+    icon: '../../public/images/logo.png', // o .png si es el caso
+  },
 }
 
 export default function RootLayout({

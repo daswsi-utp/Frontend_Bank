@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FiUser, FiSettings, FiCreditCard, FiHelpCircle, FiLogOut, FiRepeat, FiGrid, FiMenu } from 'react-icons/fi';
+import { FiUser, FiSettings, FiCreditCard, FiHelpCircle, FiLogOut, FiRepeat, FiGrid, FiMenu, FiActivity } from 'react-icons/fi';
 import './usercss/Layout.css';
 
 interface LayoutProps {
@@ -38,6 +38,10 @@ const Layout: React.FC<LayoutProps> = ({ children, setActiveView }) => {
           <div className="option" onClick={() => setActiveView('services')}>
             <FiGrid className="option-icon" />
             <span>Servicios</span>
+          </div>
+          <div className="option" onClick={() => setActiveView('movimientos')}>
+            <FiActivity className="option-icon" />
+            <span>Movimientos</span>
           </div>
         </div>
       </div>

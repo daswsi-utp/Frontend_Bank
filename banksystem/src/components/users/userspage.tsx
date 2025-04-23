@@ -12,6 +12,7 @@ import HelpCenter from './HelpCenter';
 import Logout from './Logout';
 import Transfers from './Transfers';
 import Services from './Services';
+import Movimientos from './Movimientos';
 
 const MainView: React.FC = () => {
   const [activeView, setActiveView] = useState('profile');
@@ -32,6 +33,8 @@ const MainView: React.FC = () => {
         return <Transfers />;
       case 'services':
         return <Services />;
+        case 'movimientos':
+          return <Movimientos />;
       default:
         return <Profile />;
     }
