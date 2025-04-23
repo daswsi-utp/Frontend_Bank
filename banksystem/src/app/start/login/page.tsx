@@ -1,8 +1,10 @@
-export default function LoginPage() {
-  return (
-    <div>
-      <h1>Iniciar Sesión</h1>
-      {/* Formulario de login */}
-    </div>
-  )
-}
+import React from 'react'
+import FormLogin from '@/components/ui/form-login'; // Adjust the path as needed
+
+const LoginPage = () => {
+  return <FormLogin />;
+
+};
+
+export default LoginPage
+
