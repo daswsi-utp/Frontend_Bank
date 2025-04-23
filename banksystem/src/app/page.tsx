@@ -26,11 +26,8 @@ export default function Home() {
                 </a>
               </section>
               <section className="navbar-section hide-sm">
-                <a className="btn btn-link" href="#we-do">inicio</a>
-                
-                <a className="btn btn-link" href="#team">Nosotros</a>
-                <a className="btn btn-primary btn-hire-me" href="#">Abrir cuenta</a>
-                <a className="btn btn-primary btn-hire-me" href="#">Banca por internet</a>
+                <a className="btn btn-primary btn-hire-me" href="http://192.168.1.152:3000/start/">Abrir cuenta</a>
+                <a className="btn btn-primary btn-hire-me" href="http://192.168.1.152:3000/start/login">Banca por internet</a>
               </section>
             </header>
           </div>
@@ -54,54 +51,13 @@ export default function Home() {
         </div>
       </div>
     </div>
-    
-    <div className="yeo-client">
-      <div className="container yeo-client-list">
-        <div className="columns">
-          <div className="column col-12">
-            <h3 className="feature-title">
-                Confiado por los mejores clientes
-            </h3>
-              <div className="client-logo">
 
-                <a href="#" target="_blank">
-                  <img alt="" height="40px" src="/images/algolia.svg"/>
-                  </a>
-                <a href="#" target="_blank">
-                  <img alt="" height="40px" src="/images/lapa-logo.svg"/>
-                  </a>
-                <a href="#" target="_blank">
-                  <img alt="" height="40px" src="/images/hugo.svg"/>
-                  </a>
-                <a href="#" target="_blank">
-                  <img alt="" height="40px" src="/images/codecademy.svg"/>
-                  </a>
-                <a href="#" target="_blank">
-                  <img alt="" height="40px" src="/images/aws.svg"/>
-                  </a>
-                <a href="#" target="_blank">
-                  <img alt="" height="40px" src="/images/stripe.svg"/>
-                  </a>
-                  
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
     <div className="yeo-footer">
       <div className="container">
         <div className="columns">
           <div className="column col-3 col-sm-6">
             <div className="yeo-footer-content">
               <h4>© 2025 BankNet</h4>
-              <ul className="nav">
-                <li className="nav-item">
-                  <a>Todos los derechos reservados. Sede central,  156</a>
-                  </li>
-
-
-              </ul>
             </div>
           </div>
         </div>
