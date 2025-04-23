@@ -4,7 +4,7 @@
 /** 1. Change the default font family in all browsers (opinionated). 2. Correct the line height in all browsers. 3. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS. */
 /* Document ========================================================================== */
 html {
-  font-family: sans-serif; /* 1 */
+  font-family: 'Roboto', sans-serif; /* 1 */
   -webkit-text-size-adjust: 100%; /* 3 */ 
   -ms-text-size-adjust: 100%; /* 3 */
 }
@@ -90,7 +90,7 @@ samp {
 
 /** Add the correct font style in Android 4.3-. */
 dfn {
-  font-style: italic;
+  font-family: 'Roboto', sans-serif;
 }
 
 /** Add the correct background and color in IE 9-. (Removed) */
