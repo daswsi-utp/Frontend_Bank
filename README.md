@@ -63,9 +63,9 @@ Herramientas a utilizar:
 - **RNF3:** La UI (Interfaz) debe ser intuitiva y fácil de usar para usuarios sin experiencia técnica.
 - **RNF4:** Debe ser compatible con diferentes dispositivos
 - **RNF5:** Toda información sensible como contraseñas o datos bancarios, deben estar cifradas durante su tránsito y almacenamiento.
-- **RNF6:**En caso de error del sistema, el propio sistema debe enviar un mensaje de error para indicar la falla correspondiente.
-- **RNF7:**Toda información sensible como contraseñas o datos bancarios, deben estar cifradas durante su tránsito y almacenamiento
-- **RNF8:**El sistema debe permitir mantener sesiones activas por lo menos 15 minutos de inactividad, después de ello, la sesión se cerrará automáticamente.
+- **RNF6:** En caso de error del sistema, el propio sistema debe enviar un mensaje de error para indicar la falla correspondiente.
+- **RNF7:** Toda información sensible como contraseñas o datos bancarios, deben estar cifradas durante su tránsito y almacenamiento
+- **RNF8:** El sistema debe permitir mantener sesiones activas por lo menos 15 minutos de inactividad, después de ello, la sesión se cerrará automáticamente.
 
  
 ## Atributos de Calidad del Software
