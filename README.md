@@ -15,7 +15,7 @@ Objetivo: Conformar equipo y preparar backlog inicial.
 |Scrum Master| Frank Ortiz  |
 |Developers| Arnold Juarez, Aimar Prieto, Roberto Tejada, Christopher Torres, Jose Ugarte|
 
-Crear el Product Backlog inicial.
+## Crear el Product Backlog inicial.
 
 Herramientas a utilizar:
 - **Frontend:** Next.js 
