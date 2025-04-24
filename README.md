@@ -9,8 +9,7 @@ Para esta primera entrega del proyecto, se ha usado la metodología SCRUM.
 📅 Sprint 0 – Preparación 
 Objetivo: Conformar equipo y preparar backlog inicial.
 
-
-	|Rol|Responsable|
+|Rol|Responsable|
 |Product Owner| Gonzalo Garcia Martinez |
 |Scrum Master| Frank Ortiz  |
 |Developers| Arnold Juarez, Aimar Prieto, Roberto Tejada, Christopher Torres, Jose Ugarte|
