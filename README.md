@@ -35,7 +35,7 @@ Herramientas a utilizar:
 | Aimar   | Historial Movimientos/filtros usuarios   | NAVBAR      |
 | Frank    | Filtro cuenta/filtro movimientos	| NAVBAR      |
 
---- 
+
 
 ## Requerimientos Funcionales
 
@@ -53,8 +53,8 @@ Herramientas a utilizar:
 - **RF12:**El usuario administrador podrá realizar búsquedas por filtros de datos de los  usuarios. 
 - **RF13:**El usuario administrador podrá realizar búsquedas por filtros de datos de las cuentas de ahorro. 
 - **RF14:** El usuario administrador podrá realizar búsquedas por filtros de datos de las operaciones.
-- 
---- 
+
+
 
 ## Requerimientos No Funcionales 
 
@@ -67,7 +67,6 @@ Herramientas a utilizar:
 - **RNF7:**Toda información sensible como contraseñas o datos bancarios, deben estar cifradas durante su tránsito y almacenamiento
 - **RNF8:**El sistema debe permitir mantener sesiones activas por lo menos 15 minutos de inactividad, después de ello, la sesión se cerrará automáticamente.
 
----
  
 ## Atributos de Calidad del Software
  
@@ -76,8 +75,7 @@ Seguridad: Protección de datos mediante autenticación, tokens y encriptación.
 Escalabilidad: Capacidad de crecimiento horizontal con microservicios.
 Usabilidad: Interfaz clara y simple para cualquier usuario.
 
----  
- 
+
 ## Instalación del Proyecto
 1. Clonar el repositorio:
 https://github.com/daswsi-utp/Frontend_Bank.git
