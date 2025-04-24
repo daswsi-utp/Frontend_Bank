@@ -36,7 +36,8 @@ Herramientas a utilizar:
 | Frank    | Filtro cuenta/filtro movimientos	| NAVBAR      |
 
 --- 
-### Requerimientos Funcionales
+
+## Requerimientos Funcionales
 
 - **RF1:** El sistema debe permitir abrir una cuenta de ahorros.
 - **RF2:** El sistema debe permitir ingresar con un usuario y contraseña para visualizar sus detalles de cuenta.
@@ -54,7 +55,8 @@ Herramientas a utilizar:
 - **RF14:** El usuario administrador podrá realizar búsquedas por filtros de datos de las operaciones.
 - 
 --- 
-### Requerimientos No Funcionales 
+
+## Requerimientos No Funcionales 
 
 - **RNF1:** El sistema debe tener una respuesta inferior a 2 segundos.
 - **RNF2:** Seguridad en la información y cuentas bancarias de los usuarios.
@@ -73,6 +75,7 @@ Rendimiento : Carga rápida de páginas y respuestas a las acciones del usuario.
 Seguridad: Protección de datos mediante autenticación, tokens y encriptación.
 Escalabilidad: Capacidad de crecimiento horizontal con microservicios.
 Usabilidad: Interfaz clara y simple para cualquier usuario.
+
 ---  
  
 ## Instalación del Proyecto
