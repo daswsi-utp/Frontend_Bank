@@ -64,9 +64,9 @@ Seguridad: Protección de datos mediante autenticación, tokens y encriptación.
 Escalabilidad: Capacidad de crecimiento horizontal con microservicios.
 Usabilidad: Interfaz clara y simple para cualquier usuario.
 ## SPRINT PLANNING MEETING
-Fecha de inicio del Sprint: 1 de abril, 2025
-Fecha de cierre del Sprint: 24 de mayo, 2025
-Duración del Sprint: 4 semanas
+Fecha de inicio del Sprint: 1 de abril, 2025.
+Fecha de cierre del Sprint: 24 de mayo, 2025.
+Duración del Sprint: 4 semanas.
 Historias seleccionadas para el Sprint:
  -RF1: Crear cuenta
  -RF2: Iniciar sesión (con recuperación de cuenta)
