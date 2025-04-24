@@ -63,18 +63,19 @@ Rendimiento : Carga rápida de páginas y respuestas a las acciones del usuario.
 Seguridad: Protección de datos mediante autenticación, tokens y encriptación.
 Escalabilidad: Capacidad de crecimiento horizontal con microservicios.
 Usabilidad: Interfaz clara y simple para cualquier usuario.
+
 ## SPRINT PLANNING MEETING
 Fecha de inicio del Sprint: 1 de abril, 2025.
 Fecha de cierre del Sprint: 24 de mayo, 2025.
 Duración del Sprint: 4 semanas.
 Historias seleccionadas para el Sprint:
- -RF1: Crear cuenta
- -RF2: Iniciar sesión (con recuperación de cuenta)
- -RF5: Editar datos del usuario
- -RF6: Ver cuentas
- -RF9: Ver operaciones recientes
- -RF11: Dashboard administrador
- -RF12-RF14: Filtros por usuario, cuentas y operaciones
+- **RF1:** Crear cuenta
+- **RF2:** Iniciar sesión (con recuperación de cuenta)
+- **RF5:** Editar datos del usuario
+- **RF6:** Ver cuentas
+- **RF9:** Ver operaciones recientes
+- **RF11:** Dashboard administrador
+- **RF12-RF14:** Filtros por usuario, cuentas y operaciones
 
 
 ## SPRINT BACKLOG (MAQUETACION DE VISTAS )
