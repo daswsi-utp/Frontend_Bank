@@ -26,8 +26,8 @@ export default function Home() {
                 </a>
               </section>
               <section className="navbar-section hide-sm">
-                <a className="btn btn-primary btn-hire-me" href="http://192.168.1.152:3000/start/">Abrir cuenta</a>
-                <a className="btn btn-primary btn-hire-me" href="http://192.168.1.152:3000/start/login">Banca por internet</a>
+                <a className="btn btn-primary btn-hire-me" href="http://localhost:3000/start/">Abrir cuenta</a>
+                <a className="btn btn-primary btn-hire-me" href="http://localhost:3000/start/login">Banca por internet</a>
               </section>
             </header>
           </div>

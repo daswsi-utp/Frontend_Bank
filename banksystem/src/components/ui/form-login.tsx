@@ -33,12 +33,12 @@ const FormLogin = () => {
     admin: {
       email: "admin@banco.com",
       password: "Admin1234",
-      redirectUrl: "http://192.168.1.152:3000/admin"
+      redirectUrl: "http://localhost:3000/admin"
     },
     user: {
       email: "usuario@banco.com",
       password: "Usuario123",
-      redirectUrl: "http://192.168.1.152:3000/users"
+      redirectUrl: "http://localhost:3000/users"
     }
   }
 
