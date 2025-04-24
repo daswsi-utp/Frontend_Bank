@@ -26,7 +26,7 @@ Herramientas a utilizar:
 
 ## 👥 Roles y equipo de trabajo 
 
-| Nombre   | Responsabilidad técnica           | Rol Scrum      |
+| Nombre   | Responsabilidad técnica           |      |
 |----------|------------------------------------|----------------|
 | Jose    | Login de usuarios                  |			 |
 | Arnold     |Crear Cuenta		 | MODALES      |
