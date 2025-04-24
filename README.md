@@ -64,6 +64,21 @@ Seguridad: Protección de datos mediante autenticación, tokens y encriptación.
 Escalabilidad: Capacidad de crecimiento horizontal con microservicios.
 Usabilidad: Interfaz clara y simple para cualquier usuario.
 
+
+### 🧾 Historias de Usuario – Sprint 1 (Maquetación Frontend)
+
+| ID   | Historia de Usuario                                                                 | Rol            | Objetivo funcional                                                      | Criterios de Aceptación                                                                                      | Estimación (Pts) |
+|------|--------------------------------------------------------------------------------------|----------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|------------------|
+| HU1  | Como usuario nuevo, quiero registrar una cuenta para abrir una cuenta de ahorros.   | Cliente        | Crear cuenta                                                           | Formulario con campos visibles, botón de registro, validaciones visuales.                                    | 2                |
+| HU2  | Como usuario registrado, quiero iniciar sesión para acceder al sistema.              | Cliente        | Login con opción de restablecer cuenta                                 | Campos usuario/contraseña, botón login, link restablecer cuenta, mensajes visuales.                          | 2                |
+| HU3  | Como usuario, quiero una página principal con navegación clara.                      | Cliente/Admin  | Página de inicio con navbar                                            | Navbar funcional (maquetado), accesos visuales a las otras vistas.                                           | 2                |
+| HU4  | Como cliente, quiero ver y editar mis datos personales.                              | Cliente        | Ver y modificar datos desde una vista de perfil                        | Mostrar info editable, campos visuales con botón “guardar” o similar (sin lógica aún).                       | 5                |
+| HU5  | Como cliente, quiero ver mis operaciones recientes.                                   | Cliente        | Vista de operaciones                                                   | Tabla de movimientos dummy, columnas representativas, scroll o paginación.                                   | 5                |
+| HU6  | Como cliente, quiero ver el historial completo de mis movimientos.                   | Cliente        | Acceder a transacciones completas                                      | Tabla extendida con filtros por fecha/tipo de operación.                                                     | 5                |
+| HU7  | Como administrador, quiero tener un panel con acceso a vistas de gestión.            | Administrador  | Dashboard con navegación para cuentas, usuarios y operaciones          | Menú lateral, secciones simuladas con tablas sin conexión a datos reales.                                    | 5                |
+| HU8  | Como administrador, quiero aplicar filtros por usuarios, cuentas y operaciones.      | Administrador  | Buscar datos con filtros visuales                                      | Campos de búsqueda, selects, inputs, rangos de fecha visibles.                                               | 5                |
+
+
 ## SPRINT PLANNING MEETING
 Fecha de inicio del Sprint: 1 de abril, 2025.
 Fecha de cierre del Sprint: 24 de mayo, 2025.
