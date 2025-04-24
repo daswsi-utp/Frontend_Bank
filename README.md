@@ -35,7 +35,8 @@ Herramientas a utilizar:
 | Aimar   | Historial Movimientos/filtros usuarios   | NAVBAR      |
 | Frank    | Filtro cuenta/filtro movimientos	| NAVBAR      |
 
-### ✅ Requerimientos Funcionales
+### Requerimientos Funcionales
+
 - **RF1:** El sistema debe permitir abrir una cuenta de ahorros.
 - **RF2:** El sistema debe permitir ingresar con un usuario y contraseña para visualizar sus detalles de cuenta.
 - **RF3:** El sistema tendrá la opción de restablecer la cuenta.
@@ -51,7 +52,8 @@ Herramientas a utilizar:
 - **RF13:**El usuario administrador podrá realizar búsquedas por filtros de datos de las cuentas de ahorro. 
 - **RF14:** El usuario administrador podrá realizar búsquedas por filtros de datos de las operaciones.
 
-### 🔐 Requerimientos No Funcionales 
+### Requerimientos No Funcionales 
+
 - **RNF1:** El sistema debe tener una respuesta inferior a 2 segundos.
 - **RNF2:** Seguridad en la información y cuentas bancarias de los usuarios.
 - **RNF3:** La UI (Interfaz) debe ser intuitiva y fácil de usar para usuarios sin experiencia técnica.
