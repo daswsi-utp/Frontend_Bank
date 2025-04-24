@@ -1,10 +1,13 @@
-import React from 'react'
-import FormLogin from '@/components/ui/form-login'; // Adjust the path as needed
+// src/app/start/login/page.tsx
+import React from 'react';
+import FormLogin from '@/components/ui/form-login'; // Ajusta la ruta si es necesario
 
 const LoginPage = () => {
-  return <FormLogin />;
-
+  return (
+    <div className="bg-[#4392F1] min-h-screen flex items-center justify-center">
+      <FormLogin />
+    </div>
+  );
 };
 
-export default LoginPage
-
+export default LoginPage;
