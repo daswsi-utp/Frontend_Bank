@@ -56,6 +56,26 @@ Herramientas a utilizar:
 - **RNF7:** Toda información sensible como contraseñas o datos bancarios, deben estar cifradas durante su tránsito y almacenamiento
 - **RNF8:** El sistema debe permitir mantener sesiones activas por lo menos 15 minutos de inactividad, después de ello, la sesión se cerrará automáticamente.
 
+## HISTORIA DE USUARIO POR CADA REQUISITO FUNCIONAL
+### 📌 Historias de Usuario – Product Backlog
+
+| ID   | Historia de Usuario                                                                 | Rol            | Objetivo funcional                                                    | Criterios de Aceptación                                                                  |
+|------|--------------------------------------------------------------------------------------|----------------|------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
+| HU1  | Como usuario nuevo, quiero registrar una cuenta para abrir una cuenta de ahorros.   | Cliente        | Crear cuenta                                                           | Formulario con validaciones, botón para registrar, confirmación visual.                  |
+| HU2  | Como usuario, quiero iniciar sesión con usuario y contraseña para acceder al sistema.| Cliente        | Login seguro                                                           | Campos visibles, validaciones, acceso al dashboard al ingresar credenciales correctas.   |
+| HU3  | Como usuario, quiero poder restablecer mi cuenta si olvido mis credenciales.         | Cliente        | Recuperación de cuenta                                                 | Opción visible en login, flujo de recuperación con correo o validación.                  |
+| HU4  | Como usuario, quiero acceder según mi rol para ver solo lo que me corresponde.       | Cliente/Admin  | Control de acceso por roles                                            | Usuario ve solo su panel, Admin accede a funcionalidades administrativas.                |
+| HU5  | Como cliente, quiero modificar mis datos opcionales en mi cuenta.                    | Cliente        | Edición de perfil                                                      | Vista de perfil editable, botón guardar, mensajes de éxito/error.                        |
+| HU6  | Como cliente, quiero visualizar mis cuentas de ahorro registradas.                   | Cliente        | Ver cuentas                                                            | Tabla/lista de cuentas, datos relevantes, actualizados.                                  |
+| HU7  | Como cliente, quiero transferir dinero a mis cuentas o a otras cuentas del banco.    | Cliente        | Transferencias internas                                                | Formulario con origen, destino, monto, confirmación de operación.                        |
+| HU8  | Como cliente, quiero pagar servicios públicos desde mis cuentas de ahorro.           | Cliente        | Pago de servicios                                                      | Opción con formulario, lista de servicios, comprobante visual.                           |
+| HU9  | Como cliente, quiero ver el historial de operaciones recientes de mis cuentas.       | Cliente        | Operaciones recientes                                                  | Lista ordenada por fecha, tipo, monto, con filtros opcionales.                           |
+| HU10 | Como cliente, quiero recibir notificaciones por las operaciones realizadas.          | Cliente        | Alertas y notificaciones                                               | Mensajes visuales o por email con detalles de la operación realizada.                    |
+| HU11 | Como administrador, quiero ingresar a un panel de control con mis herramientas.      | Administrador  | Dashboard de administración                                            | Acceso desde login admin, interfaz con vistas para control.                              |
+| HU12 | Como administrador, quiero buscar usuarios por filtros específicos.                  | Administrador  | Gestión de usuarios                                                    | Filtros por nombre, correo, estado, fecha de creación, etc.                              |
+| HU13 | Como administrador, quiero buscar cuentas por filtros específicos.                   | Administrador  | Gestión de cuentas bancarias                                           | Filtros por tipo de cuenta, estado, saldo, fecha de apertura, etc.                       |
+| HU14 | Como administrador, quiero filtrar operaciones por distintos criterios.              | Administrador  | Gestión de operaciones                                                 | Filtros por fecha, tipo, usuario, cuenta origen/destino.                                 |
+
  
 ## Atributos de Calidad del Software
  
