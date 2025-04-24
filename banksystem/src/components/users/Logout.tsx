@@ -1,10 +1,21 @@
 "use client";
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { Container, Button } from 'react-bootstrap';
 import { FiLogOut, FiAlertTriangle } from 'react-icons/fi';
 import './usercss/Logout.css';
 
 const Logout: React.FC = () => {
+  const router = useRouter();
+  const handleLogout = () => {
+    
+  
+    localStorage.removeItem('token'); 
+
+   
+    router.push('/');
+  };
+
   return (
     <Container className="logout-container">
       <div className="logout-card">
@@ -32,7 +43,7 @@ const Logout: React.FC = () => {
             Cancelar
           </Button>
           
-          <Button variant="danger" className="confirm-button">
+          <Button variant="danger" className="confirm-button" onClick={handleLogout}>
             Cerrar sesión
           </Button>
         </div>

@@ -22,6 +22,11 @@ const AdminSidebar = () => {
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
+  const handleLogout = () => {
+    
+    router.push('/'); 
+  };
+
   const handleItemClick = (path: string) => {
     router.push(path);
     setActiveItem(path);
@@ -152,22 +157,26 @@ const AdminSidebar = () => {
         display: isOpen ? 'block' : 'none'
       }}>
         <button
-          style={{
-            backgroundColor: '#DC493A', // Rojo para el botón de salir
-            color: '#FFFEFF',
-            border: 'none',
-            borderRadius: '8px',
-            padding: '8px 16px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            ':hover': {
-              backgroundColor: '#c23d2e' // Rojo más oscuro al hover
-            }
-          }}
-        >
-          Cerrar Sesión
-        </button>
+      onClick={handleLogout}
+      style={{
+        backgroundColor: '#DC493A',
+        color: '#FFFEFF',
+        border: 'none',
+        borderRadius: '8px',
+        padding: '8px 16px',
+        fontWeight: '600',
+        cursor: 'pointer',
+        transition: 'all 0.3s ease',
+      }}
+      onMouseOver={(e) => {
+        e.currentTarget.style.backgroundColor = '#c23d2e';
+      }}
+      onMouseOut={(e) => {
+        e.currentTarget.style.backgroundColor = '#DC493A';
+      }}
+    >
+      Cerrar Sesión
+    </button>
       </div>
     </div>
   );
