@@ -15,7 +15,7 @@ Objetivo: Conformar equipo y preparar backlog inicial.
 |Scrum Master| Frank Ortiz  |
 |Developers| Arnold Juarez, Aimar Prieto, Roberto Tejada, Christopher Torres, Jose Ugarte|
 
-## Crear el Product Backlog inicial.
+## Product Backlog inicial.
 
 Herramientas a utilizar:
 - **Frontend:** Next.js 
@@ -23,17 +23,6 @@ Herramientas a utilizar:
 - **Base de Datos:** Mysql
 - **Arquitectura:** Microservicios (Backend)- 
 - **Control de versiones:** Git + GitHub.
-
-## 👥 Roles y equipo de trabajo 
-
-| Nombre   | Responsabilidad técnica           |      |
-|----------|------------------------------------|----------------|
-| Jose    | Login de usuarios                  |			 |
-| Arnold     |Crear Cuenta		 | MODALES      |
-| Roberto | Página principal/Inicio                 | NAVBAR/MODALES      |
-| Christopher   | User(Datos)/operaciones               | NAVBAR      |
-| Aimar   | Historial Movimientos/filtros usuarios   | NAVBAR      |
-| Frank    | Filtro cuenta/filtro movimientos	| NAVBAR      |
 
 
 
@@ -75,8 +64,37 @@ Seguridad: Protección de datos mediante autenticación, tokens y encriptación.
 Escalabilidad: Capacidad de crecimiento horizontal con microservicios.
 Usabilidad: Interfaz clara y simple para cualquier usuario.
 
+## SPRINT PLANNING MEETING
+Fecha de inicio del Sprint: 1 de abril, 2025.
+Fecha de cierre del Sprint: 24 de mayo, 2025.
+Duración del Sprint: 4 semanas.
+Historias seleccionadas para el Sprint:
+- **RF1:** Crear cuenta
+- **RF2:** Iniciar sesión (con recuperación de cuenta)
+- **RF5:** Editar datos del usuario
+- **RF6:** Ver cuentas
+- **RF9:** Ver operaciones recientes
+- **RF11:** Dashboard administrador
+- **RF12-RF14:** Filtros por usuario, cuentas y operaciones
+
+
+## SPRINT BACKLOG (MAQUETACION DE VISTAS )
+Objetivo: Diseñar e implementar a estructura visual de las interfaces, dejando preparado el terreno para conectar con el backend en los siguientes sprints.
+Historias seleccionadas y TIEMPO:
+ POKER PLANNING 
+0 1 1 2 3 5 8 13 	
+| Nombre   | Responsabilidad técnica           | TIEMPO      |
+|----------|------------------------------------|----------------|
+| Jose    | Login de usuarios                  |	2	 |
+| Arnold     |Crear Cuenta		 | 2      |
+| Roberto | Página principal/Inicio                 | 2      |
+| Christopher   | User(Datos)/operaciones               | 5      |
+| Aimar   | Historial Movimientos/filtros usuarios   | 5      |
+| Frank    | Filtro cuenta/filtro movimientos	| 5      |
+
 
 ## Instalación del Proyecto
 1. Clonar el repositorio:
 https://github.com/daswsi-utp/Frontend_Bank.git
+
 
