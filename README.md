@@ -1,4 +1,4 @@
-# ֎ Proyecto Plataforma web Bank Net
+# ֎ Proyecto Plataforma web BankNet
 
 Plataforma web bancaria desarrollada con **Next.js** (frontend), **Java Web** (backend) y base de datos **MySQL**
 ![image](https://github.com/user-attachments/assets/1f28e5de-5af2-406d-9753-091eecc9d790)
