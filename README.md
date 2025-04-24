@@ -46,12 +46,12 @@ Herramientas a utilizar:
 - **RF5:** El usuario cliente podrá modificar datos opcionales de su cuenta registrada.
 - **RF6:** El usuario podrá visualizar sus cuentas de ahorro.
 - **RF7:** El usuario podrá realizar transferencias a sus propias cuentas y a cuentas de usuario del mismo banco.
-- **RF8:** el usuario podrá pagar servicios públicos con sus cuentas de ahorro.
-- **RF9:**El usuario podrá visualizar sus últimas operaciones realizadas por cada cuenta de ahorro.
-- **RF10:**El usuario recibirá notificaciones por las operaciones realizadas a sus cuentas.
-- **RF11:**El usuario administrador podrá ingresar a su cuenta y tener un panel de control.
-- **RF12:**El usuario administrador podrá realizar búsquedas por filtros de datos de los  usuarios. 
-- **RF13:**El usuario administrador podrá realizar búsquedas por filtros de datos de las cuentas de ahorro. 
+- **RF8:** El usuario podrá pagar servicios públicos con sus cuentas de ahorro.
+- **RF9:** El usuario podrá visualizar sus últimas operaciones realizadas por cada cuenta de ahorro.
+- **RF10:** El usuario recibirá notificaciones por las operaciones realizadas a sus cuentas.
+- **RF11:** El usuario administrador podrá ingresar a su cuenta y tener un panel de control.
+- **RF12:** El usuario administrador podrá realizar búsquedas por filtros de datos de los  usuarios. 
+- **RF13:** El usuario administrador podrá realizar búsquedas por filtros de datos de las cuentas de ahorro. 
 - **RF14:** El usuario administrador podrá realizar búsquedas por filtros de datos de las operaciones.
 
 
