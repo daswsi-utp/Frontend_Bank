@@ -26,7 +26,7 @@ export default function Home() {
                 </a>
               </section>
               <section className="navbar-section hide-sm">
-                <a className="btn btn-primary btn-hire-me" href="http://localhost:3000/start/">Abrir cuenta</a>
+                <a className="btn btn-primary btn-hire-me" href="http://localhost:3000/start/create_account">Abrir cuenta</a>
                 <a className="btn btn-primary btn-hire-me" href="http://localhost:3000/start/login">Banca por internet</a>
               </section>
             </header>
@@ -42,7 +42,7 @@ export default function Home() {
                 <span className="slogan-bold">Disfruta del invierno con una tarjeta de ahorros</span>
               </h1>
               <p>Pidela 100 % digital desde la app web</p>
-              <a className="btn btn-primary btn-lg btn-start" href="#y" target="_blank">Crear cuenta</a>
+              <a className="btn btn-primary btn-lg btn-start" href="http://localhost:3000/start/create_account" target="_blank">Crear cuenta</a>
             </div>
           </div>
           <div className="column col-5 hide-sm">
