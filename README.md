@@ -6,7 +6,7 @@ Plataforma web bancaria desarrollada con **Next.js** (frontend), **Java Web** (b
 
 ## Integrantes
 
-Arnold Derian Juarez Jimenez - ArnoldJuarez
+- **Arnold Derian Juarez Jimenez** - ArnoldJuarez
 Roberto Alonso Tejada Palomino - rtp-robinson
 Fran Erick Ortiz Cano - VeNoNs
 Cristopher Rubén Torres Castillo - cristofer951746
