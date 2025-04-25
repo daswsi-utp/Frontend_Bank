@@ -4,6 +4,15 @@ Plataforma web bancaria desarrollada con **Next.js** (frontend), **Java Web** (b
 
 ![image](https://github.com/user-attachments/assets/1f28e5de-5af2-406d-9753-091eecc9d790)
 
+## Integrantes
+
+Arnold Derian Juarez Jimenez - ArnoldJuarez
+Roberto Alonso Tejada Palomino - rtp-robinson
+Fran Erick Ortiz Cano - VeNoNs
+Cristopher Rubén Torres Castillo - cristofer951746
+Hildher Aimar Prieto Cuno - AimarPriCu
+Jose Carlos Ugarte Condori - JoseUG04
+
 ## Metodología SCRUM
 Para esta primera entrega del proyecto, se ha usado la metodología SCRUM.
 📅 Sprint 0 – Preparación 
