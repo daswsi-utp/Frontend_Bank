@@ -17,8 +17,8 @@ export default function Navbar() {
         </div>
         
         <div className="auth-buttons">
-          <Link href="/private/login" className="btn btn-outline">Iniciar sesión</Link>
-          <Link href="/private/register" className="btn btn-primary">Crear cuenta</Link>
+          <Link href="/userpu/login" className="btn btn-outline">Iniciar sesión</Link>
+          <Link href="/userpu/registro" className="btn btn-primary">Crear cuenta</Link>
         </div>
       </div>
     </nav>

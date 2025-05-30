@@ -1,0 +1,89 @@
+
+.container {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-size: 1.2rem;
+  color: var(--dark-color);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.alertsList {
+  list-style: none;
+}
+
+.alert {
+  display: flex;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.alert:hover {
+  transform: translateX(2px);
+}
+
+.alert.high {
+  background-color: rgba(245, 101, 101, 0.1);
+  border-left: 4px solid var(--danger-color);
+}
+
+.alert.medium {
+  background-color: rgba(237, 137, 54, 0.1);
+  border-left: 4px solid var(--warning-color);
+}
+
+.alert.low {
+  background-color: rgba(66, 153, 225, 0.1);
+  border-left: 4px solid var(--secondary-color);
+}
+
+.alertIcon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  align-self: flex-start;
+}
+
+.alertContent {
+  flex: 1;
+}
+
+.alertTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 0.25rem;
+}
+
+.alertMessage {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 0.25rem;
+}
+
+.alertTime {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .alert {
+    padding: 0.75rem;
+  }
+  
+  .alertIcon {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+  }
+}

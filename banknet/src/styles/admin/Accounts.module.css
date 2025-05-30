@@ -1,0 +1,81 @@
+@import '@/styles/admin/variables.css';
+
+.container {
+  padding: var(--spacing-unit);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-unit);
+}
+
+.tableContainer {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-unit);
+  box-shadow: var(--shadow-md);
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 0.75rem;
+  font-weight: 600;
+  color: var(--gray-color);
+  border-bottom: 1px solid var(--gray-color);
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--gray-color);
+}
+
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status.active {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--success-color);
+}
+
+.status.inactive {
+  background-color: rgba(100, 116, 139, 0.1);
+  color: var(--gray-color);
+}
+
+.actionButton {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.actionButton:hover {
+  background: var(--primary-dark);
+}

@@ -1,0 +1,97 @@
+
+.container {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-size: 1.2rem;
+  color: var(--dark-color);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.activityList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.activityItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--light-color);
+  transition: all 0.2s ease;
+}
+
+.activityItem:hover {
+  background-color: rgba(66, 153, 225, 0.1);
+  transform: translateX(2px);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.userName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 0.1rem;
+}
+
+.userRole {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.activityDetails {
+  text-align: right;
+}
+
+.activityAction {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  margin-bottom: 0.1rem;
+}
+
+.activityTime {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .activityList {
+    grid-template-columns: 1fr;
+  }
+  
+  .activityItem {
+    padding: 0.75rem;
+  }
+}

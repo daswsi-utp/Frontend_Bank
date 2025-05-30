@@ -1,0 +1,57 @@
+@import '@/styles/admin/variables.css';
+
+.container {
+  padding: var(--spacing-unit);
+}
+
+.reportGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-unit);
+}
+
+.reportCard {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-unit);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.reportCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.reportIcon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.reportTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.reportDescription {
+  font-size: 0.9rem;
+  color: var(--gray-color);
+}
+
+.generateButton {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.generateButton:hover {
+  background: var(--primary-dark);
+}

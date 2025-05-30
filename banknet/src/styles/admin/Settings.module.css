@@ -1,0 +1,65 @@
+@import '@/styles/admin/variables.css';
+
+.container {
+  padding: var(--spacing-unit);
+}
+
+.settingsForm {
+  background: white;
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-unit);
+  box-shadow: var(--shadow-md);
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-unit);
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.formControl {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--gray-color);
+  border-radius: var(--border-radius);
+}
+
+.formControl:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.checkboxLabel {
+  margin-left: 0.5rem;
+}
+
+.saveButton {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.saveButton:hover {
+  background: var(--primary-dark);
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: calc(var(--spacing-unit) * 1.5) 0 var(--spacing-unit);
+  color: var(--dark-color);
+}

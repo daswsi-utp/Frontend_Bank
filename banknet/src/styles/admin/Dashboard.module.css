@@ -1,0 +1,95 @@
+
+.adminContainer {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.mainContent {
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboardTitle {
+  font-size: 1.5rem;
+  color: var(--light-color);
+  font-weight: 600;
+}
+
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.summarySection {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.chartsSection {
+  grid-column: span 8;
+}
+
+.quickActionsSection {
+  grid-column: span 4;
+}
+
+.transactionsSection {
+  grid-column: span 8;
+}
+
+.alertsSection {
+  grid-column: span 4;
+}
+
+.activitySection {
+  grid-column: span 12;
+}
+
+@media (max-width: 1200px) {
+  .chartsSection,
+  .transactionsSection {
+    grid-column: span 12;
+  }
+  
+  .quickActionsSection,
+  .alertsSection {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 768px) {
+  .adminContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .quickActionsSection,
+  .alertsSection {
+    grid-column: span 12;
+  }
+  
+  .summarySection {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .summarySection {
+    grid-template-columns: 1fr;
+  }
+  
+  .mainContent {
+    padding: 1rem;
+  }
+}
