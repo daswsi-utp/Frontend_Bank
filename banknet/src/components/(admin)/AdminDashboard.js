@@ -5,13 +5,12 @@ import Charts from './Charts';
 import QuickActions from './QuickActions';
 import Alerts from './Alerts';
 import UserActivity from './UserActivity';
-import Sidebar from './Sidebar';
 import styles from '@/styles/admin/Dashboard.module.css';
 
 const AdminDashboard = ({ summaryData, transactions, alerts, activities }) => {
   return (
     <>
-      <Sidebar />
+      
       <main className={styles.mainContent}>
         <div className={styles.dashboardHeader}>
           <h1 className={styles.dashboardTitle}>Panel de Administración</h1>

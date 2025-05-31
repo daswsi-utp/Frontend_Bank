@@ -1,23 +1,19 @@
-import styles from '@/styles/admin/AccountsTable.module.css';
+'use client';
 
-const AccountsTable = () => {
-  // Datos de ejemplo
-  const accounts = [
-    { id: 'ACC1001', type: 'Ahorros', balance: '$5,250.00', owner: 'Juan Pérez', status: 'active' },
-    { id: 'ACC1002', type: 'Corriente', balance: '$12,845.50', owner: 'María Gómez', status: 'active' },
-    // ... más cuentas
-  ];
+import styles from '@/styles/admin/Accounts.module.css';
 
+export default function AccountsTable({ accounts }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.tableContainer}>
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Número</th>
+            <th>ID Cuenta</th>
+            <th>Cliente</th>
             <th>Tipo</th>
             <th>Saldo</th>
-            <th>Titular</th>
             <th>Estado</th>
+            <th>Fecha Apertura</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -25,16 +21,16 @@ const AccountsTable = () => {
           {accounts.map((account) => (
             <tr key={account.id}>
               <td>{account.id}</td>
+              <td>{account.client}</td>
               <td>{account.type}</td>
               <td>{account.balance}</td>
-              <td>{account.owner}</td>
-              <td>
-                <span className={`${styles.status} ${styles[account.status]}`}>
-                  {account.status}
-                </span>
+              <td className={account.status === 'Activa' ? styles.statusActive : styles.statusInactive}>
+                {account.status}
               </td>
+              <td>{account.openDate}</td>
               <td>
                 <button className={styles.actionButton}>Ver</button>
+                <button className={styles.actionButton}>Editar</button>
               </td>
             </tr>
           ))}
@@ -42,6 +38,4 @@ const AccountsTable = () => {
       </table>
     </div>
   );
-};
-
-export default AccountsTable;
+}

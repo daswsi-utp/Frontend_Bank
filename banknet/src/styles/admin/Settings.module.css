@@ -1,65 +1,186 @@
-@import '@/styles/admin/variables.css';
-
-.container {
-  padding: var(--spacing-unit);
+.settingsContainer {
+  padding: 2rem;
 }
 
-.settingsForm {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-unit);
-  box-shadow: var(--shadow-md);
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.formGroup {
-  margin-bottom: var(--spacing-unit);
+.header h1 {
+  font-size: 1.8rem;
+  color: #1e293b;
+  font-weight: 600;
 }
 
-.formLabel {
-  display: block;
-  margin-bottom: 0.5rem;
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.primaryButton {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primaryButton:hover {
+  background-color: #2563eb;
+}
+
+.tabsContainer {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tabsHeader {
+  display: flex;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tabButton {
+  padding: 1rem 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
   font-weight: 500;
+  color: #64748b;
+  position: relative;
 }
 
-.formControl {
+.tabButton.active {
+  color: #3b82f6;
+}
+
+.tabButton.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #3b82f6;
+}
+
+.tabContent {
+  padding: 1.5rem;
+}
+
+.settingGroup {
+  margin-bottom: 2rem;
+}
+
+.settingTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.settingItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.settingLabel {
+  font-weight: 500;
+  color: #334155;
+}
+
+.settingDescription {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #3b82f6;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.inputField {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid var(--gray-color);
-  border-radius: var(--border-radius);
-}
-
-.formControl:focus {
-  outline: none;
-  border-color: var(--primary-color);
-}
-
-.checkboxGroup {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.checkboxLabel {
-  margin-left: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  margin-top: 0.5rem;
 }
 
 .saveButton {
   padding: 0.75rem 1.5rem;
-  background: var(--primary-color);
+  background-color: #3b82f6;
   color: white;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
+  margin-top: 1rem;
 }
 
 .saveButton:hover {
-  background: var(--primary-dark);
+  background-color: #2563eb;
 }
 
-.sectionTitle {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: calc(var(--spacing-unit) * 1.5) 0 var(--spacing-unit);
-  color: var(--dark-color);
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .settingItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 }

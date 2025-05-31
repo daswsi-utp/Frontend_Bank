@@ -1,57 +1,300 @@
-@import '@/styles/admin/variables.css';
-
-.container {
-  padding: var(--spacing-unit);
+.reportsContainer {
+  padding: 2rem;
 }
 
-.reportGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--spacing-unit);
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
-.reportCard {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-unit);
-  box-shadow: var(--shadow-md);
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.reportCard:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-}
-
-.reportIcon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-.reportTitle {
-  font-size: 1.1rem;
+.header h1 {
+  font-size: 1.8rem;
+  color: #1e293b;
   font-weight: 600;
-  margin-bottom: 0.5rem;
 }
 
-.reportDescription {
-  font-size: 0.9rem;
-  color: var(--gray-color);
+.actions {
+  display: flex;
+  gap: 1rem;
 }
 
-.generateButton {
-  display: block;
-  margin-top: 1rem;
+.primaryButton {
   padding: 0.5rem 1rem;
-  background: var(--primary-color);
+  background-color: #3b82f6;
   color: white;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.generateButton:hover {
-  background: var(--primary-dark);
+.primaryButton:hover {
+  background-color: #2563eb;
+}
+
+.secondaryButton {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondaryButton:hover {
+  background-color: #f8fafc;
+}
+
+.reportsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.chartsSection {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tableSection {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Charts component styles */
+.chartContainer {
+  margin-bottom: 2rem;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.chartTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.chartFilters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chartFilterButton {
+  padding: 0.25rem 0.5rem;
+  background-color: #f1f5f9;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.chartFilterButton:hover {
+  background-color: #e2e8f0;
+}
+
+.chartFilterButton.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.chartWrapper {
+  height: 300px;
+  position: relative;
+}
+/* ... (estilos existentes previos) ... */
+
+/* Estilos para ReportsFilters */
+.filtersContainer {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.filtersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filterLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.filterSelect, .filterInput {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #334155;
+  background-color: white;
+  transition: border-color 0.2s;
+}
+
+.filterSelect:focus, .filterInput:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.filterSelect {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+}
+
+.applyButton {
+  padding: 0.5rem 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  display: block;
+  margin-left: auto;
+}
+
+.applyButton:hover {
+  background-color: #2563eb;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .filtersGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .applyButton {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* ... (el resto de tus estilos existentes) ... */
+/* Table component styles */
+.tableContainer {
+  margin-top: 1rem;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.dataTable th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.dataTable td {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+  font-size: 0.875rem;
+}
+
+.dataTable tr:hover td {
+  background-color: #f8fafc;
+}
+
+.tableActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tableActionButton {
+  padding: 0.25rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tableActionButton:hover {
+  background-color: #f1f5f9;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.paginationButton {
+  padding: 0.5rem;
+  background-color: #f1f5f9;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.paginationInfo {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+@media (max-width: 1200px) {
+  .reportsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .chartFilters {
+    flex-wrap: wrap;
+  }
 }

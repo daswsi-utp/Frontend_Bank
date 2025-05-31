@@ -1,74 +1,176 @@
-@import '@/styles/admin/variables.css';
-
-.container {
-  padding: var(--spacing-unit);
+.transactionsContainer {
+  padding: 2rem;
 }
 
-.filters {
+.header {
   display: flex;
-  gap: var(--spacing-unit);
-  margin-bottom: var(--spacing-unit);
-  background: white;
-  padding: var(--spacing-unit);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-md);
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.primaryButton {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primaryButton:hover {
+  background-color: #2563eb;
+}
+
+.secondaryButton {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondaryButton:hover {
+  background-color: #f8fafc;
+}
+
+.filtersContainer {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.filtersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 .filterGroup {
-  flex: 1;
+  margin-bottom: 1rem;
 }
 
 .filterLabel {
   display: block;
   margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-  color: var(--gray-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
 }
 
 .filterInput {
   width: 100%;
   padding: 0.5rem;
-  border: 1px solid var(--gray-color);
-  border-radius: var(--border-radius);
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
 }
 
-.transactionsList {
-  background: white;
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-unit);
-  box-shadow: var(--shadow-md);
+.filterSelect {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  background-color: white;
 }
 
-.transactionItem {
-  display: flex;
-  justify-content: space-between;
+.applyButton {
+  padding: 0.5rem 1rem;
+  background-color: #10b981;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.applyButton:hover {
+  background-color: #059669;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background-color: #f1f5f9;
   padding: 1rem;
-  border-bottom: 1px solid var(--gray-color);
-}
-
-.transactionInfo {
-  flex: 1;
-}
-
-.transactionAmount {
+  text-align: left;
   font-weight: 600;
+  color: #334155;
 }
 
-.transactionAmount.positive {
-  color: var(--success-color);
+.table td {
+  padding: 1rem;
+  border-top: 1px solid #e2e8f0;
+  color: #475569;
 }
 
-.transactionAmount.negative {
-  color: var(--danger-color);
+.amountPositive {
+  color: #10b981;
+  font-weight: 500;
 }
 
-.transactionDate {
-  font-size: 0.85rem;
-  color: var(--gray-color);
+.amountNegative {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.statusCompleted {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.statusPending {
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+.actionButton {
+  padding: 0.25rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: all 0.2s;
+}
+
+.actionButton:hover {
+  background-color: #f8fafc;
 }
 
 @media (max-width: 768px) {
-  .filters {
+  .header {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .filtersGrid {
+    grid-template-columns: 1fr;
   }
 }
