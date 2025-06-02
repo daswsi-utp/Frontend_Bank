@@ -1,40 +1,37 @@
-import { NextResponse } from 'next/server';
-import { verifyToken } from './src/lib/auth';
+import { NextResponse } from "next/server";
+import { jwtVerify } from "jose";
 
-const PUBLIC_ROUTES = ['/', '/login', '/registro', '/api/auth'];
-const AUTH_ROUTES = ['/dashboard', '/cuenta', '/transferencias'];
-const ADMIN_ROUTES = ['/admin'];
+const PRIVATE_PATHS = ["/admin", "/private"];
+
+const SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "banknet_secret");
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl;
-  const token = request.cookies.get(process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME)?.value;
 
-  // Permitir acceso a rutas públicas
-  if (PUBLIC_ROUTES.some(route => pathname.startsWith(route))) {
-    return NextResponse.next();
+  const isPrivate = PRIVATE_PATHS.some((path) => pathname.startsWith(path));
+  if (!isPrivate) return NextResponse.next();
+
+  const token = request.cookies.get("token")?.value;
+  if (!token) {
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // Verificar token para rutas protegidas
   try {
-    const decoded = await verifyToken(token);
-    request.user = decoded;
+    const { payload } = await jwtVerify(token, SECRET);
 
-    // Redireccionar si no tiene permisos de admin
-    if (ADMIN_ROUTES.some(route => pathname.startsWith(route)) && decoded.rol !== 'ADMIN') {
-      return NextResponse.redirect(new URL('/acceso-denegado', request.url));
+    if (pathname.startsWith("/admin") && !["ADMIN", "CAJERO", "SOPORTE"].includes(payload.rol)) {
+      return NextResponse.redirect(new URL("/unauthorized", request.url));
     }
 
     return NextResponse.next();
-  } catch (error) {
-    // Redireccionar a login si no está autenticado
-    const loginUrl = new URL('/login', request.url);
-    loginUrl.searchParams.set('from', pathname);
-    return NextResponse.redirect(loginUrl);
+  } catch (err) {
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 }
 
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico).*)',
+    "/admin/:path*",
+    "/private/:path*",
   ],
 };

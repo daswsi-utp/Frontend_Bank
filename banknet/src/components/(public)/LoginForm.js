@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import LoadingScreen from "../utils/LoadingScreen";
 import styles from "../../styles/user/LoginForm.module.css";
 import Image from "next/image";
+import { login } from "@/lib/auth";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -18,29 +19,17 @@ const LoginForm = () => {
     setError("");
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVICE_AUTH_URL}/api/auth/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const user = await login(email, password); // llama al backend
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Error al iniciar sesión");
-      }
+      // Redirección basada en rol
+      const adminRoles = ["ADMIN", "CAJERO", "SOPORTE"];
+      const redirectPath = adminRoles.includes(user.rol)
+        ? "/admin"
+        : "/private";
 
-      const { token, refreshToken, user } = await response.json();
-      document.cookie = `${process.env.NEXT_PUBLIC_TOKEN_COOKIE_NAME}=${token}; path=/; max-age=${process.env.NEXT_PUBLIC_TOKEN_EXPIRATION}`;
-      document.cookie = `${process.env.NEXT_PUBLIC_REFRESH_TOKEN_COOKIE_NAME}=${refreshToken}; path=/; max-age=${process.env.NEXT_PUBLIC_TOKEN_EXPIRATION * 7}`;
-
-      const redirectPath =
-        user.rol === "ADMIN" ? "/admin/dashboard" : "/dashboard";
       router.push(redirectPath);
     } catch (err) {
-      setError(err.message);
+      setError(err.response?.data?.message || err.message || "Error al iniciar sesión");
       setIsLoading(false);
     }
   };
@@ -48,9 +37,9 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
       {isLoading && <LoadingScreen />}
-      
+
       <div className={styles.gridContainer}>
-        {/* Sección de imagen */}
+        {/* Imagen lateral */}
         <div className={styles.imageSection}>
           <Image
             src="/sulleybank.png"
@@ -65,8 +54,8 @@ const LoginForm = () => {
             <p className={styles.welcomeText}>Tu seguridad es nuestra prioridad</p>
           </div>
         </div>
-        
-        {/* Sección del formulario */}
+
+        {/* Formulario de login */}
         <div className={styles.formSection}>
           <div className={styles.formCard}>
             <h2 className={styles.title}>Iniciar Sesión</h2>

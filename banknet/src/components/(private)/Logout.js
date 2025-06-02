@@ -3,9 +3,18 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { FiLogOut, FiAlertTriangle } from 'react-icons/fi';
+import { logout } from '@/lib/auth'; // <- asegura ruta correcta
+import { useRouter } from 'next/navigation';
 import './usercss/Logout.css';
 
 const Logout = () => {
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push('/');
+  };
+
   return (
     <Container className="logout-container">
       <div className="logout-card">
@@ -33,7 +42,7 @@ const Logout = () => {
             Cancelar
           </Button>
 
-          <Button variant="danger" className="confirm-button">
+          <Button variant="danger" className="confirm-button" onClick={handleLogout}>
             Cerrar sesión
           </Button>
         </div>

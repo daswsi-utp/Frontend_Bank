@@ -1,11 +1,23 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Form, Row, Col } from 'react-bootstrap';
 import { FiUser, FiMail, FiPhone, FiCalendar } from 'react-icons/fi';
 import './usercss/Profile.css';
+import { getCurrentUser } from '@/lib/auth';
 
 const Profile = () => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const usuario = getCurrentUser();
+    if (usuario) {
+      setUser(usuario);
+    }
+  }, []);
+
+  if (!user) return <p className="text-center mt-5">Cargando perfil...</p>;
+
   return (
     <Container className="profile-container">
       <Row className="justify-content-center">
@@ -27,7 +39,7 @@ const Profile = () => {
                   <Form.Label>Nombre completo</Form.Label>
                   <Form.Control
                     type="text"
-                    defaultValue="John Doe"
+                    value={`${user.nombre} ${user.apellido}`}
                     readOnly
                     className="form-control-custom"
                   />
@@ -42,7 +54,7 @@ const Profile = () => {
                   <Form.Label>Correo electrónico</Form.Label>
                   <Form.Control
                     type="email"
-                    defaultValue="johndoe@gmail.com"
+                    value={user.email}
                     readOnly
                     className="form-control-custom"
                   />
@@ -54,10 +66,10 @@ const Profile = () => {
                   <FiPhone />
                 </div>
                 <Form.Group className="form-group-full">
-                  <Form.Label>Número de teléfono</Form.Label>
+                  <Form.Label>DNI</Form.Label>
                   <Form.Control
-                    type="tel"
-                    defaultValue="+51 999 888 777"
+                    type="text"
+                    value={user.dni}
                     readOnly
                     className="form-control-custom"
                   />
@@ -69,10 +81,10 @@ const Profile = () => {
                   <FiCalendar />
                 </div>
                 <Form.Group className="form-group-full">
-                  <Form.Label>Fecha de nacimiento</Form.Label>
+                  <Form.Label>Rol</Form.Label>
                   <Form.Control
                     type="text"
-                    defaultValue="01/01/1990"
+                    value={user.rol}
                     readOnly
                     className="form-control-custom"
                   />
@@ -81,7 +93,7 @@ const Profile = () => {
             </div>
 
             <div className="button-container">
-              <button type="button" className="edit-button">
+              <button type="button" className="edit-button" disabled>
                 Editar información
               </button>
             </div>
