@@ -17,23 +17,31 @@ export const ADMIN_API = {
 };
 
 export const TRANSFER_API = {
-  GET_BY_TRANSACTION: (transactionId) => `${API_BASE}/api/fees/transaction/${transactionId}`,
-  GET_BY_RANGE: `${API_BASE}/api/fees/range`,
-  GET_TOTAL: `${API_BASE}/api/fees/total`,
+  // TRANSFERS
   CREATE: `${API_BASE}/api/transfers`,
   GET_BY_ID: (id) => `${API_BASE}/api/transfers/${id}`,
   GET_BY_SOURCE: (accountId) => `${API_BASE}/api/transfers/source/${accountId}`,
   GET_BY_DESTINATION: (accountId) => `${API_BASE}/api/transfers/destination/${accountId}`,
   GET_BY_DATE_RANGE: `${API_BASE}/api/transfers/range`,
   UPDATE_STATUS: (id, statusId) => `${API_BASE}/api/transfers/${id}/status/${statusId}`,
+
+  // FEES
+  GET_BY_TRANSACTION: (transactionId) => `${API_BASE}/api/fees/transaction/${transactionId}`,
+  GET_BY_RANGE: `${API_BASE}/api/fees/range`,
+  GET_TOTAL: `${API_BASE}/api/fees/total`,
+
+  // LIMITS
   CREATE_LIMIT: `${API_BASE}/api/limits`,
   GET_LIMIT: (accountId) => `${API_BASE}/api/limits/${accountId}`,
   UPDATE_LIMIT: (accountId) => `${API_BASE}/api/limits/${accountId}`,
   DELETE_LIMIT: (accountId) => `${API_BASE}/api/limits/${accountId}`,
   GET_AVAILABLE_LIMIT: (accountId) => `${API_BASE}/api/limits/${accountId}/available`,
   GET_LIMITS_BY_RANGE: `${API_BASE}/api/limits/range`,
+
+  // STATUSES
   GET_STATUSES: `${API_BASE}/api/statuses`,
 };
+
 
 export const PAYMENT_API = {
   CREATE: `${API_BASE}/api/payments`,
@@ -42,6 +50,7 @@ export const PAYMENT_API = {
   GET_ALL: `${API_BASE}/api/payments`,
 };
 
+
 export const LOG_API = {
   CREATE: `${API_BASE}/api/logs`,
   GET_BY_ID: (id) => `${API_BASE}/api/logs/${id}`,
@@ -49,16 +58,18 @@ export const LOG_API = {
   GET_ALL: `${API_BASE}/api/logs`,
 };
 
+
 export const LOAN_API = {
   CREATE: `${API_BASE}/api/loans`,
   GET_BY_ID: (id) => `${API_BASE}/api/loans/${id}`,
   GET_BY_USER: (userId) => `${API_BASE}/api/loans/user/${userId}`,
   GET_ALL: `${API_BASE}/api/loans`,
-  APPROVE: (id) => `${API_BASE}/api/loans/${id}/approve`,
+  APPROVE: (id, approvedAmount) => `${API_BASE}/api/loans/${id}/approve?approvedAmount=${approvedAmount}`,
   MAKE_PAYMENT: (loanId, amount) => `${API_BASE}/api/loan-payments/${loanId}?amount=${amount}`,
   GET_PAYMENTS: (loanId) => `${API_BASE}/api/loan-payments/${loanId}`,
   GET_LOAN_STATUSES: `${API_BASE}/api/loan-statuses`,
 };
+
 
 export const FRAUD_API = {
   CREATE_ALERT: `${API_BASE}/api/fraud-alerts`,
@@ -68,6 +79,7 @@ export const FRAUD_API = {
   CONFIRM_ALERT: (id) => `${API_BASE}/api/fraud-alerts/${id}/confirm`,
   GET_ALERT_TYPES: `${API_BASE}/api/alert-types`,
 };
+
 
 export const EMPLOYEE_API = {
   CREATE: `${API_BASE}/api/employees`,
@@ -101,3 +113,4 @@ export const ACCOUNT_API = {
   GET_STATUSES: `${API_BASE}/api/account-statuses`,
   GET_TYPES: `${API_BASE}/api/account-types`,
 };
+

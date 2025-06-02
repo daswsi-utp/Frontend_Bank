@@ -3,11 +3,18 @@
 import { useState, useEffect } from 'react';
 import AdminDashboard from '@/components/(admin)/AdminDashboard';
 import Login from '@/components/(admin)/Login';
+import {
+  fetchAllUsers,             // NUEVA FUNCIÓN para obtener todos los usuarios
+  fetchTodayTransfers,
+  fetchRecentTransactions,
+  fetchRecentAlerts,
+  fetchUserActivities
+} from '@/lib/adminData';
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [dashboardData, setDashboardData] = useState(null);
 
-  // Verificar autenticación al cargar (opcional)
   useEffect(() => {
     const auth = localStorage.getItem('admin-auth');
     if (auth === 'true') {
@@ -15,37 +22,90 @@ export default function AdminPage() {
     }
   }, []);
 
+  useEffect(() => {
+    const loadDashboardData = async () => {
+      try {
+        const usuarios = await fetchAllUsers(); // Debe devolver todos los usuarios
+        const totalUsers = usuarios.length;
+
+        const totalTransfers = await fetchTodayTransfers();
+        const transactions = await fetchRecentTransactions();
+        const alerts = await fetchRecentAlerts();
+        const activities = await fetchUserActivities();
+
+        // Procesar gráfico de FRAUDES por día
+        const fraudePorDia = alerts.reduce((acc, a) => {
+          const fecha = new Date(a.fecha).toLocaleDateString();
+          acc[fecha] = (acc[fecha] || 0) + 1;
+          return acc;
+        }, {});
+
+        const fraudeChartData = Object.entries(fraudePorDia).map(([fecha, cantidad]) => ({
+          fecha,
+          cantidad
+        }));
+
+        // Procesar gráfico de CLIENTES por departamento
+        const usuariosPorDepartamento = usuarios.reduce((acc, u) => {
+          const d = u.departamento || 'Desconocido';
+          acc[d] = (acc[d] || 0) + 1;
+          return acc;
+        }, {});
+
+        const clientesChartData = Object.entries(usuariosPorDepartamento).map(([departamento, cantidad]) => ({
+          departamento,
+          cantidad
+        }));
+
+        setDashboardData({
+          summaryData: [
+            { title: 'Clientes Totales', value: totalUsers, change: 0, icon: '👥' },
+            { title: 'Transacciones Hoy', value: totalTransfers, change: 0, icon: '💸' },
+            { title: 'Depósitos', value: '$2M', change: 0, icon: '📈' },
+            { title: 'Retiros', value: '$1.5M', change: 0, icon: '📉' },
+          ],
+          transactions: transactions.map(tx => ({
+            id: tx.id,
+            account: `****${tx.accountDestino?.slice(-4)}`,
+            type: tx.tipoTransaccion || 'Transferencia',
+            amount: tx.monto,
+            date: new Date(tx.fecha).toLocaleDateString(),
+            status: tx.estado?.nombre || 'desconocido'
+          })),
+          alerts: alerts.map(a => ({
+            level: a.tipo?.toLowerCase() === 'alta' ? 'high' : 'medium',
+            icon: '⚠️',
+            title: 'Alerta de Fraude',
+            message: a.descripcion,
+            time: new Date(a.fecha).toLocaleTimeString()
+          })),
+          activities: activities.map(l => ({
+            user: l.usuario || 'Empleado',
+            role: 'Admin',
+            action: l.descripcion,
+            time: new Date(l.fecha).toLocaleTimeString()
+          })),
+          fraudeChartData,
+          clientesChartData
+        });
+      } catch (error) {
+        console.error("Error al cargar el dashboard:", error);
+      }
+    };
+
+    if (isAuthenticated) {
+      loadDashboardData();
+    }
+  }, [isAuthenticated]);
+
   const handleLogin = () => {
     localStorage.setItem('admin-auth', 'true');
     setIsAuthenticated(true);
-  };
-
-  // Datos de ejemplo (puedes mover esto a un archivo aparte)
-  const dashboardData = {
-    summaryData: [
-      { title: 'Clientes Totales', value: '12,458', change: 4.5, icon: '👥' },
-      { title: 'Transacciones Hoy', value: '1,245', change: 12.3, icon: '💸' },
-      { title: 'Depósitos', value: '$4.2M', change: 8.1, icon: '📈' },
-      { title: 'Retiros', value: '$3.8M', change: -2.4, icon: '📉' },
-    ],
-    transactions: [
-      { id: 'TX1001', account: '****4582', type: 'Depósito', amount: 1250, date: '10/05/2023', status: 'completado' },
-      { id: 'TX1002', account: '****3621', type: 'Transferencia', amount: -500, date: '10/05/2023', status: 'completado' },
-      { id: 'TX1003', account: '****7854', type: 'Retiro', amount: -1200, date: '09/05/2023', status: 'pendiente' },
-    ],
-    alerts: [
-      { level: 'high', icon: '⚠️', title: 'Intento de acceso sospechoso', message: 'Intento de acceso desde IP desconocida', time: 'Hace 2 horas' },
-      { level: 'medium', icon: 'ℹ️', title: 'Actualización requerida', message: 'Nueva versión del sistema disponible', time: 'Hace 5 horas' },
-    ],
-    activities: [
-      { user: 'Juan Pérez', role: 'Cajero', action: 'Aprobó transacción #TX1001', time: 'Hace 15 min' },
-      { user: 'María Gómez', role: 'Gerente', action: 'Actualizó límites de cuenta', time: 'Hace 32 min' },
-    ]
   };
 
   if (!isAuthenticated) {
     return <Login onLogin={handleLogin} />;
   }
 
-  return <AdminDashboard {...dashboardData} />;
+  return dashboardData ? <AdminDashboard {...dashboardData} /> : <div>Cargando...</div>;
 }

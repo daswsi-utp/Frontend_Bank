@@ -9,10 +9,9 @@ export default function ClientsTable({ clients }) {
         <thead>
           <tr>
             <th>Cliente</th>
-            <th>Contacto</th>
-            <th>Cuentas</th>
-            <th>Última Actividad</th>
-            <th>Estado</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            
             <th>Acciones</th>
           </tr>
         </thead>
@@ -22,7 +21,7 @@ export default function ClientsTable({ clients }) {
               <td>
                 <div className={styles.clientInfo}>
                   <div className={styles.clientAvatar}>
-                    {client.name.charAt(0)}
+                    {client.name?.charAt(0) || '?'}
                   </div>
                   <div>
                     <div>{client.name}</div>
@@ -30,12 +29,9 @@ export default function ClientsTable({ clients }) {
                   </div>
                 </div>
               </td>
-              <td>
-                <div>{client.email}</div>
-                <div style={{ fontSize: '0.75rem', color: '#64748b' }}>{client.phone}</div>
-              </td>
-              <td>{client.accounts}</td>
-              <td>{client.lastActivity}</td>
+              <td>{client.email}</td>
+              <td>{client.phone}</td>
+              
               <td className={client.status === 'Activo' ? styles.statusActive : styles.statusInactive}>
                 {client.status}
               </td>

@@ -1,17 +1,39 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import AccountsTable from '@/components/(admin)/AccountsTable';
+import { ACCOUNT_API } from '@/lib/api';
 import styles from '@/styles/admin/Accounts.module.css';
 
 export default function AccountsPage() {
-  // Datos de ejemplo para cuentas
-  const accountsData = [
-    { id: 'ACC1001', client: 'Juan Pérez', type: 'Ahorros', balance: '$5,250.00', status: 'Activa', openDate: '15/03/2022' },
-    { id: 'ACC1002', client: 'María Gómez', type: 'Corriente', balance: '$12,850.00', status: 'Activa', openDate: '22/07/2021' },
-    { id: 'ACC1003', client: 'Carlos Ruiz', type: 'Ahorros', balance: '$3,200.00', status: 'Inactiva', openDate: '05/11/2020' },
-    { id: 'ACC1004', client: 'Ana López', type: 'Corriente', balance: '$8,750.00', status: 'Activa', openDate: '30/01/2023' },
-    { id: 'ACC1005', client: 'Pedro Sánchez', type: 'Empresarial', balance: '$45,000.00', status: 'Activa', openDate: '18/09/2022' },
-  ];
+  const [accounts, setAccounts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadAccounts = async () => {
+      try {
+        const res = await fetch(ACCOUNT_API.GET_ALL);
+        const data = await res.json();
+
+        const formatted = data.map(acc => ({
+          id: acc.id,
+          client: `ID Usuario ${acc.userId}`, // No viene el nombre, solo el userId
+          type: acc.accountTypeName,
+          balance: `$${parseFloat(acc.balance).toFixed(2)}`,
+          status: acc.accountStatusName,
+          openDate: new Date(acc.createdAt).toLocaleDateString()
+        }));
+
+        setAccounts(formatted);
+      } catch (error) {
+        console.error('Error al cargar cuentas:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadAccounts();
+  }, []);
 
   return (
     <div className={styles.accountsContainer}>
@@ -38,7 +60,7 @@ export default function AccountsPage() {
         </select>
       </div>
 
-      <AccountsTable accounts={accountsData} />
+      {loading ? <p>Cargando cuentas...</p> : <AccountsTable accounts={accounts} />}
     </div>
   );
 }

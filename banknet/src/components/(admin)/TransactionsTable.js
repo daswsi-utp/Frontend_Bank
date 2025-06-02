@@ -16,8 +16,8 @@ const TransactionsTable = ({ transactions }) => {
           </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
+          {transactions.map((transaction, index) => (
+            <tr key={transaction.id ?? `${transaction.account}-${index}`}>
               <td>{transaction.id}</td>
               <td>{transaction.account}</td>
               <td>{transaction.type}</td>

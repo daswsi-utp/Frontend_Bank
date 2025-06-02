@@ -1,17 +1,46 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import ClientsTable from '@/components/(admin)/ClientsTable';
 import styles from '@/styles/admin/Clients.module.css';
+import { USER_API } from '@/lib/api';
 
 export default function ClientsPage() {
-  // Datos de ejemplo para clientes
-  const clientsData = [
-    { id: 'CLI1001', name: 'Juan Pérez', email: 'juan@example.com', phone: '555-1234', accounts: 2, lastActivity: 'Ayer', status: 'Activo' },
-    { id: 'CLI1002', name: 'María Gómez', email: 'maria@example.com', phone: '555-5678', accounts: 1, lastActivity: 'Hoy', status: 'Activo' },
-    { id: 'CLI1003', name: 'Carlos Ruiz', email: 'carlos@example.com', phone: '555-9012', accounts: 1, lastActivity: 'Hace 3 días', status: 'Inactivo' },
-    { id: 'CLI1004', name: 'Ana López', email: 'ana@example.com', phone: '555-3456', accounts: 3, lastActivity: 'Hoy', status: 'Activo' },
-    { id: 'CLI1005', name: 'Pedro Sánchez', email: 'pedro@example.com', phone: '555-7890', accounts: 1, lastActivity: 'Ayer', status: 'Activo' },
-  ];
+  const [clients, setClients] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadClients = async () => {
+      try {
+        const res = await fetch(USER_API.GET_ALL);
+        const data = await res.json();
+
+        const formatted = data.map(c => ({
+          id: c.id_usuario,
+          name: c.nombre,
+          email: c.email,
+          phone: c.telefono,
+          dni: c.dni,
+          departamento: c.departamento,
+          provincia: c.provincia,
+          distrito: c.distrito,
+          direccion: c.direccion,
+          fecha_creacion: new Date(c.fecha_creacion).toLocaleDateString(),
+          accounts: '-', // puedes implementar esto luego
+          lastActivity: '-', // puedes enlazar con logs
+          status: 'Activo' // asumes activo si no hay campo
+        }));
+
+        setClients(formatted);
+      } catch (err) {
+        console.error('Error al cargar clientes:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadClients();
+  }, []);
 
   return (
     <div className={styles.clientsContainer}>
@@ -38,7 +67,7 @@ export default function ClientsPage() {
         </select>
       </div>
 
-      <ClientsTable clients={clientsData} />
+      {loading ? <p>Cargando clientes...</p> : <ClientsTable clients={clients} />}
     </div>
   );
 }
