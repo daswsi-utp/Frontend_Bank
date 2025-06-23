@@ -71,7 +71,7 @@ const RegisterForm = () => {
         throw new Error(errorData.message || 'Error al registrar usuario');
       }
 
-      router.push('/login?registro=exitoso');
+      router.push('/userpu/login');
     } catch (err) {
       setError(err.message || 'Error inesperado');
       setIsLoading(false);

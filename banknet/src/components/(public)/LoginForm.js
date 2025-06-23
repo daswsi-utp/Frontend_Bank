@@ -42,7 +42,7 @@ const LoginForm = () => {
         {/* Imagen lateral */}
         <div className={styles.imageSection}>
           <Image
-            src="/sulleybank.png"
+            src="/banco.png"
             alt="Banking Security"
             layout="fill"
             objectFit="cover"
