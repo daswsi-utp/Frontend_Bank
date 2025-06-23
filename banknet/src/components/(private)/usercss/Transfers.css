@@ -1,0 +1,117 @@
+.transfers-container {
+    padding: 20px 0;
+  }
+  
+  .section-title {
+    color: #4392F1;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .tabs-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ECE8EF;
+    border-radius: 12px;
+    padding: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  }
+  
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #666;
+  }
+  
+  .tab:hover {
+    background-color: rgba(67, 146, 241, 0.1);
+  }
+  
+  .tab.active {
+    background-color: #4392F1;
+    color: white;
+  }
+  
+  .tab-icon {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .transfer-form-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .transfer-form {
+    padding: 20px;
+  }
+  
+  .form-control-custom {
+    background-color: #ECE8EF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .form-control-custom:focus {
+    background-color: #E7F0FF;
+    box-shadow: none;
+    border: 1px solid #4392F1;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  
+  .transfer-button {
+    background-color: #4392F1;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .transfer-button:hover {
+    background-color: #3278d8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(67, 146, 241, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .tabs-container {
+      padding: 3px;
+    }
+    
+    .tab {
+      padding: 8px;
+    }
+    
+    .tab-icon {
+      font-size: 16px;
+    }
+    
+    .transfer-form {
+      padding: 15px;
+    }
+  }

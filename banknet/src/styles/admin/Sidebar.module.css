@@ -1,0 +1,167 @@
+
+.sidebar {
+  background: var(--primary-color);
+  color: white;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+.nav {
+  flex: 1;
+}
+
+.menu {
+  list-style: none;
+}
+
+.menuItem {
+  text-decoration: none; /* quitar subrayado */
+  color: white; /* color por defecto */
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.menuItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menuItem.active {
+  background-color: var(--secondary-color);
+  font-weight: 600;
+}
+
+/* Aplicar color y quitar subrayado a elementos <a> dentro del item */
+.menuItem a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+
+.menuIcon {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuLabel {
+  font-size: 0.9rem;
+}
+
+.footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+
+.userName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+  color: white;
+}
+
+.userRole {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  color: white;
+}
+
+.logoutButton {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    left: -100%;
+    width: 80%;
+    height: 100%;
+    padding: 1rem;
+  }
+  
+  .sidebar.active {
+    left: 0;
+  }
+  
+  .menuLabel {
+    display: none;
+  }
+  
+  .menuIcon {
+    margin-right: 0;
+    font-size: 1.3rem;
+  }
+  
+  .menuItem {
+    justify-content: center;
+    padding: 1rem 0.5rem;
+  }
+  
+  .userProfile {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .avatar {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}

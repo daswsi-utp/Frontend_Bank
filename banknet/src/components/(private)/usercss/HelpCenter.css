@@ -1,0 +1,215 @@
+.help-center-container {
+    padding: 20px 0;
+  }
+  
+  .section-title {
+    color: #4392F1;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .search-box {
+    position: relative;
+    margin-bottom: 25px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border-radius: 25px;
+    border: none;
+    background-color: #ECE8EF;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    background-color: #E7F0FF;
+    box-shadow: 0 0 0 2px rgba(67, 146, 241, 0.2);
+  }
+  
+  .help-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+  }
+  
+  .help-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .help-option:hover {
+    transform: translateY(-5px);
+  }
+  
+  .help-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #E7F0FF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #4392F1;
+    font-size: 24px;
+    transition: all 0.3s ease;
+  }
+  
+  .help-option:hover .help-icon {
+    background-color: #4392F1;
+    color: white;
+  }
+  
+  .help-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .faq-title {
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  
+  .faq-accordion {
+    margin-bottom: 30px;
+  }
+  
+  .faq-item {
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .faq-header {
+    background-color: white !important;
+    padding: 0;
+  }
+  
+  .accordion-button {
+    padding: 15px 20px;
+    font-weight: 500;
+    background-color: white !important;
+    color: #333 !important;
+    box-shadow: none !important;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    color: #4392F1 !important;
+  }
+  
+  .accordion-button:focus {
+    border-color: transparent;
+    box-shadow: none;
+  }
+  
+  .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M12 15l-4.243-4.243 1.415-1.414L12 12.172l2.828-2.829 1.415 1.414z' fill='rgba(67, 146, 241, 1)'/%3E%3C/svg%3E");
+    transition: all 0.3s ease;
+  }
+  
+  .faq-body {
+    padding: 15px 20px;
+    background-color: #F9F9F9;
+    color: #666;
+  }
+  
+  .contact-form {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-title {
+    color: #4392F1;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .contact-description {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  .form-control-custom {
+    background-color: #ECE8EF;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .form-control-custom:focus {
+    background-color: #E7F0FF;
+    box-shadow: none;
+    border: 1px solid #4392F1;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  }
+  
+  .submit-button {
+    background-color: #4392F1;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #3278d8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(67, 146, 241, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .help-options {
+      flex-wrap: wrap;
+    }
+    
+    .help-option {
+      width: 30%;
+      margin-bottom: 15px;
+    }
+    
+    .help-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+    }
+    
+    .help-text {
+      font-size: 12px;
+    }
+    
+    .contact-form {
+      padding: 15px;
+    }
+  }
