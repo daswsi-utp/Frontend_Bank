@@ -1,37 +1,24 @@
-import { NextResponse } from "next/server";
-import { jwtVerify } from "jose";
+import { NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
-const PRIVATE_PATHS = ["/admin", "/private"];
+export function middleware(req) {
+  const { pathname } = req.nextUrl;
+  const userCookie = req.cookies.get('user');
 
-const SECRET = new TextEncoder().encode(process.env.JWT_SECRET || "banknet_secret");
+  const isAdminRoute = pathname.startsWith('/admin');
+  const isPrivateRoute = pathname.startsWith('/private');
 
-export async function middleware(request) {
-  const { pathname } = request.nextUrl;
-
-  const isPrivate = PRIVATE_PATHS.some((path) => pathname.startsWith(path));
-  if (!isPrivate) return NextResponse.next();
-
-  const token = request.cookies.get("token")?.value;
-  if (!token) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  // Si entra a /admin o /private y no hay cookie de usuario, redirige a /unauthorized
+  if ((isAdminRoute || isPrivateRoute) && !userCookie) {
+    const url = req.nextUrl.clone();
+    url.pathname = '/unauthorized';
+    return NextResponse.redirect(url);
   }
 
-  try {
-    const { payload } = await jwtVerify(token, SECRET);
-
-    if (pathname.startsWith("/admin") && !["ADMIN", "CAJERO", "SOPORTE"].includes(payload.rol)) {
-      return NextResponse.redirect(new URL("/unauthorized", request.url));
-    }
-
-    return NextResponse.next();
-  } catch (err) {
-    return NextResponse.redirect(new URL("/login", request.url));
-  }
+  return NextResponse.next();
 }
 
+// Aplica solo a estas rutas
 export const config = {
-  matcher: [
-    "/admin/:path*",
-    "/private/:path*",
-  ],
+  matcher: ['/admin/:path*', '/private/:path*'],
 };

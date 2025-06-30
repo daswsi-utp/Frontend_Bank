@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LoadingScreen from '../utils/LoadingScreen';
 import styles from '../../styles/user/RegisterForm.module.css';
-import { USER_API } from '@/lib/api';
+
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
