@@ -2,7 +2,7 @@
 
 import styles from '@/styles/admin/Accounts.module.css';
 
-export default function AccountsTable({ accounts }) {
+export default function AccountsTable({ accounts, onUpdate, onDelete }) {
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
@@ -29,8 +29,19 @@ export default function AccountsTable({ accounts }) {
               </td>
               <td>{account.openDate}</td>
               <td>
-                <button className={styles.actionButton}>Ver</button>
-                <button className={styles.actionButton}>Editar</button>
+                <button
+                  className={styles.actionButton}
+                  onClick={() => onUpdate(account.id, { ...account })}
+                >
+                  Editar
+                </button>
+
+                <button
+                  className={styles.actionButton}
+                  onClick={() => onDelete(account.id)}
+                >
+                  Eliminar
+                </button>
               </td>
             </tr>
           ))}

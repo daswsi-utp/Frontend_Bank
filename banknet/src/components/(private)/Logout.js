@@ -3,7 +3,6 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { FiLogOut, FiAlertTriangle } from 'react-icons/fi';
-import { logout } from '@/lib/auth'; // <- asegura ruta correcta
 import { useRouter } from 'next/navigation';
 import './usercss/Logout.css';
 
@@ -11,7 +10,9 @@ const Logout = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    logout();
+    // Si más adelante deseas eliminar alguna cookie, lo haces aquí
+    // document.cookie = 'user=; Max-Age=0; path=/';
+
     router.push('/');
   };
 
@@ -38,7 +39,7 @@ const Logout = () => {
         </div>
 
         <div className="logout-actions">
-          <Button variant="outline-secondary" className="cancel-button">
+          <Button variant="outline-secondary" className="cancel-button" onClick={() => router.back()}>
             Cancelar
           </Button>
 

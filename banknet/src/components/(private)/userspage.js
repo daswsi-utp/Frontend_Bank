@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { getUserFromCookie } from '@/lib/auth';
 
 // Componentes
 import Layout from './Layout';
@@ -15,6 +17,15 @@ import Movimientos from './MovementFilters';
 
 const MainView = () => {
   const [activeView, setActiveView] = useState('profile');
+  const router = useRouter();
+
+  useEffect(() => {
+    const user = getUserFromCookie();
+
+    if (!user || user.role !== 'CLIENTE') {
+      router.replace('/unauthorized');
+    }
+  }, []);
 
   const renderContent = () => {
     switch (activeView) {

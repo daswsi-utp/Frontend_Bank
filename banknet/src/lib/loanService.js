@@ -1,7 +1,9 @@
 // src/lib/loanService.js
 import { api } from './api';
 
-// ===================== PRÉSTAMOS ===================== //
+//
+// ====================== PRÉSTAMOS ======================
+//
 
 /**
  * Obtener todos los préstamos.
@@ -11,11 +13,19 @@ export const getAllLoans = async () => {
 };
 
 /**
- * Obtener préstamo por ID.
+ * Obtener un préstamo por ID.
  * @param {number} id
  */
 export const getLoanById = async (id) => {
   return await api(`/loans/${id}`, 'GET');
+};
+
+/**
+ * Obtener préstamos por ID de usuario.
+ * @param {number} userId
+ */
+export const getLoansByUser = async (userId) => {
+  return await api(`/loans/user/${userId}`, 'GET');
 };
 
 /**
@@ -27,7 +37,7 @@ export const createLoan = async (loanData) => {
 };
 
 /**
- * Actualizar un préstamo (monto, estado, etc).
+ * Actualizar un préstamo existente.
  * @param {number} id
  * @param {object} updatedData
  */
@@ -44,14 +54,16 @@ export const deleteLoan = async (id) => {
 };
 
 
-
-// ===================== CUOTAS DE PRÉSTAMO ===================== //
+//
+// ================== CUOTAS DE PRÉSTAMO ==================
+//
 
 /**
- * Obtener todas las cuotas de préstamo.
+ * Obtener una cuota por ID.
+ * @param {number} id
  */
-export const getAllInstallments = async () => {
-  return await api('/installments', 'GET');
+export const getInstallmentById = async (id) => {
+  return await api(`/installments/${id}`, 'GET');
 };
 
 /**
@@ -63,10 +75,26 @@ export const getInstallmentsByLoanId = async (loanId) => {
 };
 
 /**
- * Marcar cuota como pagada o actualizar su estado.
- * @param {number} installmentId
+ * Crear una nueva cuota.
+ * @param {object} installmentData
+ */
+export const createInstallment = async (installmentData) => {
+  return await api('/installments', 'POST', installmentData);
+};
+
+/**
+ * Actualizar una cuota existente.
+ * @param {number} id
  * @param {object} updatedData
  */
-export const updateInstallment = async (installmentId, updatedData) => {
-  return await api(`/installments/${installmentId}`, 'PUT', updatedData);
+export const updateInstallment = async (id, updatedData) => {
+  return await api(`/installments/${id}`, 'PUT', updatedData);
+};
+
+/**
+ * Eliminar una cuota.
+ * @param {number} id
+ */
+export const deleteInstallment = async (id) => {
+  return await api(`/installments/${id}`, 'DELETE');
 };

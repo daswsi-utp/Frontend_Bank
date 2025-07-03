@@ -17,6 +17,14 @@ export const getAccountById = async (id) => {
 };
 
 /**
+ * Obtener cuentas por ID de usuario.
+ * @param {number} userId
+ */
+export const getAccountsByUserId = async (userId) => {
+  return await api(`/accounts/user/${userId}`, 'GET');
+};
+
+/**
  * Crear una nueva cuenta.
  * @param {object} accountData
  */
@@ -41,16 +49,7 @@ export const deleteAccount = async (id) => {
   return await api(`/accounts/${id}`, 'DELETE');
 };
 
-
-
 // ===================== MOVIMIENTOS DE CUENTA ===================== //
-
-/**
- * Obtener todos los movimientos de todas las cuentas.
- */
-export const getAllAccountMovements = async () => {
-  return await api('/account-movements', 'GET');
-};
 
 /**
  * Obtener movimientos por ID de cuenta.
@@ -58,6 +57,14 @@ export const getAllAccountMovements = async () => {
  */
 export const getMovementsByAccountId = async (accountId) => {
   return await api(`/account-movements/account/${accountId}`, 'GET');
+};
+
+/**
+ * Obtener un movimiento por su ID.
+ * @param {number} id
+ */
+export const getMovementById = async (id) => {
+  return await api(`/account-movements/${id}`, 'GET');
 };
 
 /**

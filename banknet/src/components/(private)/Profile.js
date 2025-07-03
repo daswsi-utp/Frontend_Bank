@@ -4,16 +4,21 @@ import React, { useEffect, useState } from 'react';
 import { Container, Form, Row, Col } from 'react-bootstrap';
 import { FiUser, FiMail, FiPhone, FiCalendar } from 'react-icons/fi';
 import './usercss/Profile.css';
-import { getCurrentUser } from '@/lib/auth';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const usuario = getCurrentUser();
-    if (usuario) {
-      setUser(usuario);
-    }
+    // Simulando datos del usuario cargados
+    const fakeUser = {
+      nombre: 'Luis',
+      apellido: 'Gómez',
+      email: 'luis.gomez@example.com',
+      dni: '12345678',
+      rol: 'CLIENTE'
+    };
+
+    setUser(fakeUser);
   }, []);
 
   if (!user) return <p className="text-center mt-5">Cargando perfil...</p>;

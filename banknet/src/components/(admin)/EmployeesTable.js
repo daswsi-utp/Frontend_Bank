@@ -1,14 +1,15 @@
 'use client';
 
 import styles from '@/styles/admin/Clients.module.css';
+import AssignRoleButton from '@/components/(admin)/AssignRoleButton';
 
-export default function ClientsTable({ clients, onEdit, onDelete }) {
+export default function EmployeesTable({ employees, onEdit, onDelete }) {
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>Cliente</th>
+            <th>Empleado</th>
             <th>Contacto</th>
             <th>Ubicación</th>
             <th>Fecha Registro</th>
@@ -17,43 +18,44 @@ export default function ClientsTable({ clients, onEdit, onDelete }) {
           </tr>
         </thead>
         <tbody>
-          {clients.map((client) => (
-            <tr key={client.id}>
+          {employees.map((employee) => (
+            <tr key={employee.id}>
               <td>
                 <div className={styles.clientInfo}>
                   <div className={styles.clientAvatar}>
-                    {client.name.charAt(0).toUpperCase()}
+                    {employee.name.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <div className={styles.clientName}>{client.name}</div>
-                    <div className={styles.clientEmail}>DNI: {client.dni}</div>
+                    <div className={styles.clientName}>{employee.name}</div>
+                    <div className={styles.clientEmail}>DNI: {employee.dni}</div>
                   </div>
                 </div>
               </td>
               <td>
-                <div>{client.email}</div>
-                <div className={styles.clientEmail}>{client.phone}</div>
+                <div>{employee.email}</div>
+                <div className={styles.clientEmail}>{employee.telefono}</div>
               </td>
               <td>
-                {client.departamento}, {client.provincia}
+                {employee.departamento}, {employee.provincia}
               </td>
-              <td>{client.fecha_creacion}</td>
+              <td>{employee.fecha_creacion}</td>
               <td>
-                <span className={styles.statusActive}>{client.status}</span>
+                <span className={styles.statusActive}>{employee.status}</span>
               </td>
               <td>
-                <button 
-                  onClick={() => onEdit(client)} 
+                <button
+                  onClick={() => onEdit(employee)}
                   className={styles.actionButton}
                 >
                   Editar
                 </button>
-                <button 
-                  onClick={() => onDelete(client)} 
+                <button
+                  onClick={() => onDelete(employee)}
                   className={styles.actionButton}
                 >
                   Eliminar
                 </button>
+                <AssignRoleButton employee={employee} />
               </td>
             </tr>
           ))}

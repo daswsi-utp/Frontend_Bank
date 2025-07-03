@@ -1,81 +1,111 @@
+/* Estilos base */
 .clientsContainer {
   padding: 2rem;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  color: #2d3748;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .header h1 {
-  font-size: 1.8rem;
-  color: #1e293b;
+  font-size: 1.75rem;
+  color: #1a365d;
   font-weight: 600;
+  margin: 0;
 }
 
+/* Botones */
 .actions {
   display: flex;
   gap: 1rem;
 }
 
+
 .primaryButton {
-  padding: 0.5rem 1rem;
-  background-color: #3b82f6;
+  padding: 0.625rem 1.25rem;
+  background-color: #2b6cb0;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .primaryButton:hover {
-  background-color: #2563eb;
+  background-color: #2c5282;
 }
 
 .secondaryButton {
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1.25rem;
   background-color: white;
-  color: #3b82f6;
-  border: 1px solid #3b82f6;
-  border-radius: 4px;
+  color: #2b6cb0;
+  border: 1px solid #2b6cb0;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .secondaryButton:hover {
-  background-color: #f8fafc;
+  background-color: #ebf8ff;
 }
 
+/* Filtros */
 .filters {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1.5rem;
-  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .searchInput {
-  padding: 0.5rem 1rem;
+  padding: 0.625rem 1rem;
   border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  flex-grow: 1;
-  max-width: 300px;
+  border-radius: 6px;
+  flex: 1;
+  min-width: 250px;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #63b3ed;
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.2);
 }
 
 .filterSelect {
-  padding: 0.5rem;
+  padding: 0.625rem 1rem;
   border: 1px solid #cbd5e1;
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: white;
+  font-size: 0.9375rem;
+  min-width: 180px;
 }
 
-/* Estilos para la tabla */
+/* Tabla */
 .tableContainer {
-  overflow-x: auto;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .table {
@@ -84,54 +114,78 @@
 }
 
 .table th {
-  background-color: #f1f5f9;
-  padding: 1rem;
+  background-color: #f7fafc;
+  padding: 1rem 1.25rem;
   text-align: left;
   font-weight: 600;
-  color: #334155;
+  color: #4a5568;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 .table td {
-  padding: 1rem;
-  border-top: 1px solid #e2e8f0;
-  color: #475569;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.9375rem;
 }
 
-.statusActive {
-  color: #10b981;
-  font-weight: 500;
+.table tr:last-child td {
+  border-bottom: none;
 }
 
-.statusInactive {
-  color: #ef4444;
-  font-weight: 500;
-}
-
-.actionButton {
-  padding: 0.25rem 0.5rem;
-  background-color: transparent;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  transition: all 0.2s;
-}
-
-.actionButton:hover {
+.table tr:hover td {
   background-color: #f8fafc;
 }
 
+/* Estados */
+.statusActive {
+  color: #38a169;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusActive::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #38a169;
+}
+
+.statusInactive {
+  color: #e53e3e;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.statusInactive::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #e53e3e;
+}
+
+/* Avatar del cliente */
 .clientAvatar {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: #e2e8f0;
+  background-color: #ebf8ff;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 0.75rem;
-  color: #64748b;
+  color: #3182ce;
   font-weight: 600;
+  margin-right: 0.75rem;
 }
 
 .clientInfo {
@@ -139,18 +193,174 @@
   align-items: center;
 }
 
+.clientName {
+  font-weight: 500;
+  color: #2d3748;
+}
+
+.clientEmail {
+  font-size: 0.8125rem;
+  color: #718096;
+}
+
+/* Acciones */
+.actionButton {
+  padding: 0.375rem 0.75rem;
+  background-color: transparent;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+}
+
+.actionButton:hover {
+  background-color: #f7fafc;
+  border-color: #a0aec0;
+}
+
+/* Modales */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modalContent {
+  padding: 2rem;
+}
+
+.modalTitle {
+  font-size: 1.5rem;
+  color: #1a365d;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputLabel {
+  font-size: 0.875rem;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.modalInput {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  transition: all 0.2s;
+}
+
+.modalInput:focus {
+  outline: none;
+  border-color: #63b3ed;
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.2);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.25rem;
   }
   
-  .filters {
+  .actions {
+    width: 100%;
+    justify-content: flex-start;
     flex-wrap: wrap;
   }
   
-  .searchInput {
-    max-width: 100%;
+  .filters {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .searchInput,
+  .filterSelect {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .table th,
+  .table td {
+    padding: 0.75rem;
+  }
+  
+  .modalContent {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clientsContainer {
+    padding: 1.5rem 1rem;
+  }
+  
+  .modalActions {
+    flex-direction: column;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
   }
 }

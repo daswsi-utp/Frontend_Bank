@@ -8,13 +8,13 @@ const Sidebar = () => {
 
   const menuItems = [
     { 
-      icon: '🏠', 
+      icon: '📊', 
       label: 'Dashboard', 
       href: '/admin',
       active: pathname === '/admin'
     },
     { 
-      icon: '💳', 
+      icon: '🏦', 
       label: 'Cuentas', 
       href: '/admin/accounts',
       active: pathname === '/admin/accounts'
@@ -26,28 +26,31 @@ const Sidebar = () => {
       active: pathname === '/admin/transactions'
     },
     { 
-      icon: '📊', 
-      label: 'Reportes', 
-      href: '/admin/reports',
-      active: pathname === '/admin/reports'
-    },
-    { 
       icon: '👥', 
       label: 'Clientes', 
       href: '/admin/clients',
       active: pathname === '/admin/clients'
     },
     { 
-      icon: '⚙️', 
-      label: 'Configuración', 
-      href: '/admin/settings',
-      active: pathname === '/admin/settings'
+      icon: '👔', 
+      label: 'Empleados', 
+      href: '/admin/empleoyes',
+      active: pathname === '/admin/employees'
+    },
+    { 
+      icon: '📑', 
+      label: 'Reportes', 
+      href: '/admin/reports',
+      active: pathname === '/admin/reports'
     },
   ];
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.logo}>BankNet Admin</div>
+      <div className={styles.logo}>
+        <span className={styles.logoIcon}>🏦</span>
+        <span className={styles.logoText}>BankAdmin</span>
+      </div>
       <nav className={styles.nav}>
         <ul className={styles.menu}>
           {menuItems.map((item, index) => (
@@ -66,12 +69,15 @@ const Sidebar = () => {
       <div className={styles.footer}>
         <div className={styles.userProfile}>
           <div className={styles.avatar}>AD</div>
-          <div>
+          <div className={styles.userInfo}>
             <p className={styles.userName}>Admin User</p>
             <p className={styles.userRole}>Administrador</p>
           </div>
         </div>
-        <button className={styles.logoutButton}>Cerrar Sesión</button>
+        <button className={styles.logoutButton}>
+          <span className={styles.logoutIcon}>🚪</span>
+          <span>Cerrar Sesión</span>
+        </button>
       </div>
     </div>
   );

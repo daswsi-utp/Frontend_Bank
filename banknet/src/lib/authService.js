@@ -2,34 +2,14 @@
 import { api } from './api';
 
 /**
- * Iniciar sesión como cliente.
+ * Iniciar sesión con email y contraseña.
+ * El backend devolverá userId, rol y más.
  * @param {{ email: string, password: string }} credentials
- * @returns {Promise<any>} Respuesta del backend con token, usuario, etc.
+ * @returns {Promise<any>} Respuesta con datos del usuario
  */
-export const loginClient = async (credentials) => {
-  return await api('/auth/login', 'POST', credentials);
-};
-
-/**
- * Iniciar sesión como empleado (admin, cajero, analista, etc).
- * @param {{ email: string, password: string }} credentials
- * @returns {Promise<any>}
- */
-export const loginAdmin = async (credentials) => {
-  return await api('/auth/admin/login', 'POST', credentials);
-};
-
-/**
- * Cerrar sesión activa del usuario.
- * @param {string} token Token de sesión (opcional si estás usando cookies)
- */
-export const logout = async (token) => {
-  return await api('/auth/logout', 'POST', null, token);
-};
-
-/**
- * Validar token o sesión activa (opcional).
- */
-export const validateSession = async () => {
-  return await api('/auth/validate', 'GET');
+export const login = async ({ email, password }) => {
+  return await api('/auth/login', 'POST', {
+    email,
+    password
+  });
 };

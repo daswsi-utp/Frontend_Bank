@@ -1,15 +1,20 @@
 // src/lib/logService.js
 import { api } from './api';
 
+//
+// ========== LOGS DE AUDITORÍA ==========
+//
+
 /**
- * Obtener todos los logs de auditoría.
+ * Crear un nuevo log de auditoría.
+ * @param {object} logData
  */
-export const getAllLogs = async () => {
-  return await api('/api/logs', 'GET');
+export const createLog = async (logData) => {
+  return await api('/api/logs', 'POST', logData);
 };
 
 /**
- * Obtener un log específico por ID.
+ * Obtener un log por ID.
  * @param {number} id
  */
 export const getLogById = async (id) => {
@@ -17,17 +22,25 @@ export const getLogById = async (id) => {
 };
 
 /**
- * Obtener logs por ID de usuario.
- * @param {number} userId
+ * Obtener todos los logs.
  */
-export const getLogsByUserId = async (userId) => {
-  return await api(`/api/logs/user/${userId}`, 'GET');
+export const getAllLogs = async () => {
+  return await api('/api/logs', 'GET');
 };
 
 /**
- * Registrar una nueva acción de auditoría.
- * @param {object} logData
+ * Actualizar un log existente.
+ * @param {number} id
+ * @param {object} updatedData
  */
-export const createLog = async (logData) => {
-  return await api('/api/logs', 'POST', logData);
+export const updateLog = async (id, updatedData) => {
+  return await api(`/api/logs/${id}`, 'PUT', updatedData);
+};
+
+/**
+ * Eliminar un log.
+ * @param {number} id
+ */
+export const deleteLog = async (id) => {
+  return await api(`/api/logs/${id}`, 'DELETE');
 };

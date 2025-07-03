@@ -12,6 +12,7 @@
     "axios": "^1.9.0",
     "bootstrap": "^5.3.6",
     "chart.js": "^4.4.9",
+    "cookies-next": "^6.0.0",
     "geist": "^1.4.2",
     "jose": "^6.0.11",
     "js-cookie": "^3.0.5",

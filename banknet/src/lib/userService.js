@@ -1,15 +1,26 @@
-// src/lib/userService.js
 import { api } from './api';
 
+//
+// ========== USUARIOS ==========
+//
+
 /**
- * Obtener todos los usuarios (clientes y empleados).
+ * Crear un nuevo usuario.
+ * @param {object} data - Datos del usuario (UsuarioRequestDTO)
+ */
+export const createUser = async (data) => {
+  return await api('/api/users', 'POST', data);
+};
+
+/**
+ * Obtener todos los usuarios.
  */
 export const getAllUsers = async () => {
   return await api('/api/users', 'GET');
 };
 
 /**
- * Obtener un usuario por su ID.
+ * Obtener un usuario por ID.
  * @param {number} id
  */
 export const getUserById = async (id) => {
@@ -17,26 +28,56 @@ export const getUserById = async (id) => {
 };
 
 /**
- * Crear un nuevo usuario.
- * @param {object} userData
- */
-export const createUser = async (userData) => {
-  return await api('/api/users', 'POST', userData);
-};
-
-/**
- * Actualizar datos de un usuario.
+ * Actualizar un usuario.
  * @param {number} id
- * @param {object} updatedData
+ * @param {object} data - Datos actualizados (UsuarioRequestDTO)
  */
-export const updateUser = async (id, updatedData) => {
-  return await api(`/api/users/${id}`, 'PUT', updatedData);
+export const updateUser = async (id, data) => {
+  return await api(`/api/users/${id}`, 'PUT', data);
 };
 
 /**
- * Eliminar un usuario por su ID.
+ * Eliminar un usuario.
  * @param {number} id
  */
 export const deleteUser = async (id) => {
   return await api(`/api/users/${id}`, 'DELETE');
+};
+
+
+//
+// ========== METADATOS DE EMPLEADO ==========
+//
+
+/**
+ * Crear metadata para empleado.
+ * @param {object} data - EmpleadoMetadataRequestDTO
+ */
+export const createEmployeeMetadata = async (data) => {
+  return await api('/api/employees/metadata', 'POST', data);
+};
+
+/**
+ * Obtener metadata por ID.
+ * @param {number} id
+ */
+export const getEmployeeMetadataById = async (id) => {
+  return await api(`/api/employees/metadata/${id}`, 'GET');
+};
+
+/**
+ * Actualizar metadata por ID.
+ * @param {number} id
+ * @param {object} data - EmpleadoMetadataRequestDTO
+ */
+export const updateEmployeeMetadata = async (id, data) => {
+  return await api(`/api/employees/metadata/${id}`, 'PUT', data);
+};
+
+/**
+ * Eliminar metadata por ID.
+ * @param {number} id
+ */
+export const deleteEmployeeMetadata = async (id) => {
+  return await api(`/api/employees/metadata/${id}`, 'DELETE');
 };
