@@ -1,15 +1,22 @@
-import styles from '@/styles/admin/SummaryCard.module.css';
+// src/components/(admin)/SummaryCards.js
+'use client';
 
-const SummaryCard = ({ title, value, change, icon }) => {
+import styles from '@/styles/admin/Dashboard1.module.css';
+
+const SummaryCard = ({ title, value, icon, trend, percentage }) => {
+  const trendColor = trend === 'up' ? '#4CAF50' : trend === 'down' ? '#F44336' : '#FFC107';
+  
   return (
-    <div className={styles.card}>
-      <div className={styles.icon}>{icon}</div>
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.value}>{value}</p>
-        <p className={`${styles.change} ${change >= 0 ? styles.positive : styles.negative}`}>
-          {change >= 0 ? '+' : ''}{change}%
-        </p>
+    <div className={styles.summaryCard}>
+      <div className={styles.cardIcon} style={{ backgroundColor: `${trendColor}20` }}>
+        {icon}
+      </div>
+      <div className={styles.cardContent}>
+        <span className={styles.cardTitle}>{title}</span>
+        <span className={styles.cardValue}>{value}</span>
+        <div className={styles.cardTrend} style={{ color: trendColor }}>
+          {trend === 'up' ? '↑' : trend === 'down' ? '↓' : '→'} {percentage}
+        </div>
       </div>
     </div>
   );

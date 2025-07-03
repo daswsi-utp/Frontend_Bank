@@ -14,6 +14,7 @@ import Logout from './Logout';
 import Transfers from './Transfers';
 import Services from './Services';
 import Movimientos from './MovementFilters';
+import Loans from './Loans'; // ✅ Nuevo componente importado
 
 const MainView = () => {
   const [activeView, setActiveView] = useState('profile');
@@ -45,6 +46,8 @@ const MainView = () => {
         return <Services />;
       case 'movimientos':
         return <Movimientos />;
+      case 'Prestamos': // ✅ Nueva opción para préstamos
+        return <Loans />;
       default:
         return <Profile />;
     }

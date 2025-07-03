@@ -37,12 +37,7 @@ const Sidebar = () => {
       href: '/admin/empleoyes',
       active: pathname === '/admin/employees'
     },
-    { 
-      icon: '📑', 
-      label: 'Reportes', 
-      href: '/admin/reports',
-      active: pathname === '/admin/reports'
-    },
+    
   ];
 
   return (

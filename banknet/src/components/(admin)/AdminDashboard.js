@@ -1,62 +1,90 @@
 'use client';
 
 import SummaryCard from './SummaryCards';
-import TransactionsTable from './TransactionsTable';
-import QuickActions from './QuickActions';
-import Alerts from './Alerts';
-import UserActivity from './UserActivity';
-import FraudChart from './FraudChart';
 import ClientesChart from './ClientesChart';
-import styles from '@/styles/admin/Dashboard.module.css';
+import FraudeChart from './FraudChart';
+import ActivityTimeline from './ActivityTimeline';
+import RecentTransactionsTable from './RecentTransactionsTable';
+import RecentAlertsTable from './RecentAlertsTable';
+import MetricsTrend from './MetricsTrend';
+import styles from '@/styles/admin/Dashboard1.module.css';
 
-const AdminDashboard = ({ summaryData, transactions, alerts, activities, fraudeChartData, clientesChartData }) => {
+const AdminDashboard = ({
+  summaryData,
+  clientesChartData,
+  fraudeChartData,
+  transactions,
+  alerts,
+  activities,
+  monthlyData
+}) => {
   return (
-    <>
-      <main className={styles.mainContent}>
-        <div className={styles.dashboardHeader}>
-          <h1 className={styles.dashboardTitle}>Panel de Administración</h1>
-          <div>Bienvenido, Administrador</div>
+    <main className={styles.mainContent}>
+      <div className={styles.dashboardHeader}>
+        <h1 className={styles.dashboardTitle}>Panel de Administración</h1>
+        <div className={styles.welcomeMessage}>Bienvenido, Administrador</div>
+        <div className={styles.lastUpdated}>
+          Última actualización: {new Date().toLocaleString()}
+        </div>
+      </div>
+
+      {/* Sección de KPI Cards */}
+      <section className={styles.summarySection}>
+        {summaryData.map((data, index) => (
+          <SummaryCard
+            key={index}
+            title={data.title}
+            value={data.value}
+            icon={data.icon}
+            trend={data.trend}
+            percentage={data.percentage}
+          />
+        ))}
+      </section>
+
+      {/* Sección de Gráficos principales */}
+      <section className={styles.mainCharts}>
+        <div className={styles.chartContainer}>
+          <h3>Distribución de Usuarios</h3>
+          <ClientesChart data={clientesChartData} />
         </div>
 
-        <div className={styles.dashboardGrid}>
-          {/* Sección de Resumen */}
-          <section className={styles.summarySection}>
-            {summaryData.map((data, index) => (
-              <SummaryCard key={index} {...data} />
-            ))}
-          </section>
-
-          {/* Sección de Gráficos */}
-          <section className={styles.chartsSection}>
-            <h3 style={{ marginBottom: '10px' }}>Movimientos Mensuales</h3>
-            <FraudChart data={fraudeChartData} />
-
-            <h3 style={{ marginTop: '40px', marginBottom: '10px' }}>Distribución de Clientes</h3>
-            <ClientesChart data={clientesChartData} />
-          </section>
-
-          {/* Sección de Acciones Rápidas */}
-          <section className={styles.quickActionsSection}>
-            <QuickActions />
-          </section>
-
-          {/* Sección de Transacciones */}
-          <section className={styles.transactionsSection}>
-            <TransactionsTable transactions={transactions} />
-          </section>
-
-          {/* Sección de Alertas */}
-          <section className={styles.alertsSection}>
-            <Alerts alerts={alerts} />
-          </section>
-
-          {/* Sección de Actividad */}
-          <section className={styles.activitySection}>
-            <UserActivity activities={activities} />
-          </section>
+        <div className={styles.chartContainer}>
+          <h3>Alertas de Fraude por Tipo</h3>
+          <FraudeChart data={fraudeChartData} />
         </div>
-      </main>
-    </>
+      </section>
+
+      {/* Sección de Tendencias */}
+      <section className={styles.trendsSection}>
+        <h3>Tendencias Mensuales</h3>
+        <MetricsTrend
+          metrics={[
+            { name: 'Transferencias', data: monthlyData.transfers },
+            { name: 'Pagos', data: monthlyData.payments },
+            { name: 'Alertas', data: monthlyData.alerts }
+          ]}
+        />
+      </section>
+
+      {/* Sección Inferior con Tablas y Timeline */}
+      <section className={styles.bottomSection}>
+        <div className={styles.tableContainer}>
+          <h3>Últimas Transferencias</h3>
+          <RecentTransactionsTable data={transactions} />
+        </div>
+
+        <div className={styles.tableContainer}>
+          <h3>Alertas Recientes</h3>
+          <RecentAlertsTable data={alerts} />
+        </div>
+
+        <div className={styles.timelineContainer}>
+          <h3>Actividad Reciente</h3>
+          <ActivityTimeline data={activities} />
+        </div>
+      </section>
+    </main>
   );
 };
 

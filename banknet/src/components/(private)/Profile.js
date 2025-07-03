@@ -1,25 +1,48 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Container, Form, Row, Col } from 'react-bootstrap';
-import { FiUser, FiMail, FiPhone, FiCalendar } from 'react-icons/fi';
+import { Container, Form, Row, Col, Button } from 'react-bootstrap';
+import { FiUser, FiMail, FiPhone, FiHome, FiMapPin } from 'react-icons/fi';
 import './usercss/Profile.css';
+import { getUserFromCookie } from '@/lib/auth';
+import { getUserById, updateUser } from '@/lib/userService';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
+  const [formData, setFormData] = useState({
+    telefono: '',
+    direccion: '',
+    distrito: '',
+    provincia: '',
+    departamento: '',
+  });
 
   useEffect(() => {
-    // Simulando datos del usuario cargados
-    const fakeUser = {
-      nombre: 'Luis',
-      apellido: 'Gómez',
-      email: 'luis.gomez@example.com',
-      dni: '12345678',
-      rol: 'CLIENTE'
+    const fetchUser = async () => {
+      const session = getUserFromCookie();
+      if (!session) return;
+      const data = await getUserById(session.userId);
+      setUser(data);
+      setFormData({
+        telefono: data.telefono || '',
+        direccion: data.direccion || '',
+        distrito: data.distrito || '',
+        provincia: data.provincia || '',
+        departamento: data.departamento || '',
+      });
     };
-
-    setUser(fakeUser);
+    fetchUser();
   }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    if (!user) return;
+    await updateUser(user.id, { ...user, ...formData });
+    alert('Información actualizada correctamente.');
+  };
 
   if (!user) return <p className="text-center mt-5">Cargando perfil...</p>;
 
@@ -44,7 +67,7 @@ const Profile = () => {
                   <Form.Label>Nombre completo</Form.Label>
                   <Form.Control
                     type="text"
-                    value={`${user.nombre} ${user.apellido}`}
+                    value={`${user.nombre} ${user.apePaterno} ${user.apeMaterno}`}
                     readOnly
                     className="form-control-custom"
                   />
@@ -71,11 +94,12 @@ const Profile = () => {
                   <FiPhone />
                 </div>
                 <Form.Group className="form-group-full">
-                  <Form.Label>DNI</Form.Label>
+                  <Form.Label>Teléfono</Form.Label>
                   <Form.Control
                     type="text"
-                    value={user.dni}
-                    readOnly
+                    name="telefono"
+                    value={formData.telefono}
+                    onChange={handleChange}
                     className="form-control-custom"
                   />
                 </Form.Group>
@@ -83,14 +107,63 @@ const Profile = () => {
 
               <div className="input-group-custom">
                 <div className="input-icon">
-                  <FiCalendar />
+                  <FiHome />
                 </div>
                 <Form.Group className="form-group-full">
-                  <Form.Label>Rol</Form.Label>
+                  <Form.Label>Dirección</Form.Label>
                   <Form.Control
                     type="text"
-                    value={user.rol}
-                    readOnly
+                    name="direccion"
+                    value={formData.direccion}
+                    onChange={handleChange}
+                    className="form-control-custom"
+                  />
+                </Form.Group>
+              </div>
+
+              <div className="input-group-custom">
+                <div className="input-icon">
+                  <FiMapPin />
+                </div>
+                <Form.Group className="form-group-full">
+                  <Form.Label>Distrito</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="distrito"
+                    value={formData.distrito}
+                    onChange={handleChange}
+                    className="form-control-custom"
+                  />
+                </Form.Group>
+              </div>
+
+              <div className="input-group-custom">
+                <div className="input-icon">
+                  <FiMapPin />
+                </div>
+                <Form.Group className="form-group-full">
+                  <Form.Label>Provincia</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="provincia"
+                    value={formData.provincia}
+                    onChange={handleChange}
+                    className="form-control-custom"
+                  />
+                </Form.Group>
+              </div>
+
+              <div className="input-group-custom">
+                <div className="input-icon">
+                  <FiMapPin />
+                </div>
+                <Form.Group className="form-group-full">
+                  <Form.Label>Departamento</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="departamento"
+                    value={formData.departamento}
+                    onChange={handleChange}
                     className="form-control-custom"
                   />
                 </Form.Group>
@@ -98,9 +171,9 @@ const Profile = () => {
             </div>
 
             <div className="button-container">
-              <button type="button" className="edit-button" disabled>
-                Editar información
-              </button>
+              <Button type="button" className="edit-button" onClick={handleSubmit}>
+                Guardar cambios
+              </Button>
             </div>
           </Form>
         </Col>

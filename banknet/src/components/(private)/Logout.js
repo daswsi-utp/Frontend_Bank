@@ -10,11 +10,13 @@ const Logout = () => {
   const router = useRouter();
 
   const handleLogout = () => {
-    // Si más adelante deseas eliminar alguna cookie, lo haces aquí
-    // document.cookie = 'user=; Max-Age=0; path=/';
+  // Borra la cookie del usuario (asegúrate de que el nombre coincida)
+  document.cookie = 'user=; Max-Age=0; path=/';
 
-    router.push('/');
-  };
+  // Redirige al inicio
+  router.push('/');
+};
+
 
   return (
     <Container className="logout-container">

@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import {
   FiUser,
-  FiSettings,
-  FiCreditCard,
   FiHelpCircle,
   FiLogOut,
   FiRepeat,
@@ -24,8 +22,6 @@ const Layout = ({ children, setActiveView }) => {
 
   const menuItems = [
     { name: 'Mi perfil', icon: <FiUser />, view: 'profile' },
-    { name: 'Configurar mi app', icon: <FiSettings />, view: 'configureApp' },
-    { name: 'Configurar mis tarjetas', icon: <FiCreditCard />, view: 'configureCards' },
     { name: 'Centro de ayuda', icon: <FiHelpCircle />, view: 'helpCenter' },
     { name: 'Cerrar sesión', icon: <FiLogOut />, view: 'logout' },
   ];

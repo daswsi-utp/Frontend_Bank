@@ -33,7 +33,7 @@ const LoginForm = () => {
 
       // Redirigir al dashboard privado
       if (response.userType === "CLIENTE") {
-        router.push("/cliente");
+        router.push("/private");
       } else if (response.userType === "EMPLEADO") {
         router.push("/admin");
       } else {

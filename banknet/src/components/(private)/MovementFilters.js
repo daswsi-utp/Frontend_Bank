@@ -1,58 +1,68 @@
 'use client';
 
-import { useState } from "react";
-import { FaFileExcel } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { getUserFromCookie } from '@/lib/auth';
+import { getAccountsByUserId, getMovementsByAccountId } from '@/lib/accountService';
 import './usercss/MovementFilters.css';
 
 export default function MovementFilters() {
-  const movimientos = [
-    {
-      id: 1,
-      detalle: "Transferencia recibida",
-      monto: 200.0,
-      fecha: "21 Abril",
-      tipo: "Ingreso",
-      icono: "T",
-    },
-    {
-      id: 2,
-      detalle: "Retiro en cajero",
-      monto: 50.0,
-      fecha: "20 Abril",
-      tipo: "Egreso",
-      icono: "R",
-    },
-    {
-      id: 3,
-      detalle: "Pago de luz",
-      monto: 100.0,
-      fecha: "19 Abril",
-      tipo: "Egreso",
-      icono: "T",
-    },
-  ];
-
+  const [account, setAccount] = useState(null);
+  const [movements, setMovements] = useState([]);
   const [busqueda, setBusqueda] = useState("");
 
-  const movimientosFiltrados = movimientos.filter((mov) =>
-    mov.detalle.toLowerCase().includes(busqueda.toLowerCase())
+  useEffect(() => {
+    const fetchData = async () => {
+      const user = getUserFromCookie();
+      console.log("Usuario desde cookie:", user);
+
+      if (!user) return;
+
+      try {
+        const userAccounts = await getAccountsByUserId(user.userId);
+        console.log("Cuentas encontradas:", userAccounts);
+
+        if (userAccounts.length > 0) {
+          const mainAccount = userAccounts[0];
+          setAccount(mainAccount);
+          console.log("Cuenta principal:", mainAccount);
+
+          const accountMovements = await getMovementsByAccountId(mainAccount.id);
+          console.log("Movimientos encontrados:", accountMovements);
+
+          setMovements(accountMovements);
+        }
+      } catch (error) {
+        console.error("Error al cargar datos de cuenta y movimientos", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const movimientosFiltrados = movements.filter((mov) =>
+    mov.description && mov.description.toLowerCase().includes(busqueda.toLowerCase())
   );
+
+  const esIngreso = (tipo) => {
+    return tipo === "DEPOSITO" || tipo === "TRANSFERENCIA_RECIBIDA";
+  };
 
   return (
     <div className="movement-container">
       <div className="movement-wrapper">
-        <div className="account-summary">
-          <h2>CUENTA:</h2>
-          <p>Cuenta Yape Soles</p>
-          <p>Disponible</p>
-          <p className="saldo">S/0.00</p>
-        </div>
+        {account ? (
+          <div className="account-summary">
+            <h2>Cuenta Asociada</h2>
+            <p><strong>Número:</strong> {account.accountNumber}</p>
+            <p><strong>Saldo Disponible:</strong></p>
+            <p className="saldo">S/{parseFloat(account.balance).toFixed(2)}</p>
+          </div>
+        ) : (
+          <p>Cargando cuenta...</p>
+        )}
 
         <div className="header-bar">
           <h3>Movimientos ({movimientosFiltrados.length})</h3>
-          <button className="export-btn">
-            <FaFileExcel /> Exportar Movimientos
-          </button>
         </div>
 
         <div className="search-bar">
@@ -69,15 +79,16 @@ export default function MovementFilters() {
             movimientosFiltrados.map((mov) => (
               <div key={mov.id} className="movement-card">
                 <div className="movement-info">
-                  <div className="movement-icon">{mov.icono}</div>
+                  <div className="movement-icon">{mov.movementType.charAt(0)}</div>
                   <div>
-                    <p>{mov.detalle}</p>
-                    <p className="fecha">{mov.fecha}</p>
+                    <p className="descripcion">{mov.description || "Sin descripción"}</p>
+                    <p className="tipo-movimiento"><strong>Tipo:</strong> {mov.movementType}</p>
+                    <p className="fecha">{new Date(mov.date).toLocaleDateString()}</p>
                   </div>
                 </div>
                 <div>
-                  <p className={`monto ${mov.tipo === "Ingreso" ? "ingreso" : "egreso"}`}>
-                    {mov.tipo === "Egreso" ? "-" : ""}S/{mov.monto.toFixed(2)}
+                  <p className={`monto ${esIngreso(mov.movementType) ? "ingreso" : "egreso"}`}>
+                    {esIngreso(mov.movementType) ? "" : "-"}S/{parseFloat(mov.amount).toFixed(2)}
                   </p>
                 </div>
               </div>

@@ -1,21 +1,36 @@
+// src/components/(admin)/FraudeChart.js
 'use client';
 
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
-const FraudChart = ({ data }) => {
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8'];
+
+const FraudeChart = ({ data }) => {
   return (
-    <div style={{ width: '100%', height: 250 }}>
+    <div style={{ width: '100%', height: 300 }}>
       <ResponsiveContainer>
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="fecha" />
-          <YAxis />
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="cantidad"
+            nameKey="tipo"
+            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
           <Tooltip />
-          <Bar dataKey="cantidad" fill="#ff6b6b" />
-        </BarChart>
+          <Legend />
+        </PieChart>
       </ResponsiveContainer>
     </div>
   );
 };
 
-export default FraudChart;
+export default FraudeChart;
