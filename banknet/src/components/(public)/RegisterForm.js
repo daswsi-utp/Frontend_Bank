@@ -1,9 +1,10 @@
 'use client';
+
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { createUser } from '@/lib/userService';
 import LoadingScreen from '../utils/LoadingScreen';
 import styles from '../../styles/user/RegisterForm.module.css';
-
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,8 @@ const RegisterForm = () => {
     distrito: '',
     direccion: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    tipo: 'CLIENTE' // ✅ Por defecto
   });
 
   const [error, setError] = useState('');
@@ -39,41 +41,25 @@ const RegisterForm = () => {
     setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Las contraseñas no coinciden');
+      setError('Las contraseñas no coinciden.');
       setIsLoading(false);
       return;
     }
 
     try {
-      const userResponse = await fetch(USER_API.CREATE, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nombre: formData.nombre,
-          apePaterno: formData.apePaterno,
-          apeMaterno: formData.apeMaterno,
-          email: formData.email,
-          telefono: formData.telefono,
-          dni: formData.dni,
-          departamento: formData.departamento,
-          provincia: formData.provincia,
-          distrito: formData.distrito,
-          direccion: formData.direccion,
-          password: formData.password // El backend la usará para crear la credencial
-        }),
-      });
+      const { password, confirmPassword, ...userData } = formData;
 
-      if (!userResponse.ok) {
-        const errorData = await userResponse.json();
-        console.error('Error detalle:', errorData);
-        throw new Error(errorData.message || 'Error al registrar usuario');
-      }
+      // 🔁 Registrar usuario en microservicio de usuarios
+      const userResponse = await createUser(userData);
+      console.log('✅ Usuario creado:', userResponse); // Aquí ves el ID
+
+      // Aquí se podría registrar la credencial después...
+      // Pero primero solo verificamos que el ID llegue correctamente
 
       router.push('/userpu/login');
     } catch (err) {
-      setError(err.message || 'Error inesperado');
+      console.error('❌ Error al registrar:', err);
+      setError('No se pudo registrar el usuario.');
       setIsLoading(false);
     }
   };
@@ -108,17 +94,7 @@ const RegisterForm = () => {
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="telefono">Teléfono</label>
-              <input
-                type="tel"
-                id="telefono"
-                name="telefono"
-                value={formData.telefono}
-                onChange={handleChange}
-                pattern="[0-9]*"
-                required
-                placeholder="Ej. 987654321"
-                className={styles.input}
-              />
+              <input type="tel" id="telefono" name="telefono" value={formData.telefono} onChange={handleChange} required pattern="[0-9]*" placeholder="Ej. 987654321" className={styles.input} />
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="dni">DNI</label>
@@ -149,21 +125,19 @@ const RegisterForm = () => {
           <div className={styles.formRow}>
             <div className={styles.formGroup}>
               <label htmlFor="password">Contraseña</label>
-              <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required minLength="8" className={styles.input} />
+              <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} required className={styles.input} />
             </div>
             <div className={styles.formGroup}>
               <label htmlFor="confirmPassword">Confirmar Contraseña</label>
-              <input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required minLength="8" className={styles.input} />
+              <input type="password" id="confirmPassword" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required className={styles.input} />
             </div>
           </div>
 
-          <button type="submit" className={styles.button}>
-            Registrarse
-          </button>
+          <button type="submit" className={styles.button}>Registrarse</button>
         </form>
 
         <div className={styles.footer}>
-          <p>¿Ya tienes una cuenta? <a href="/login" className={styles.link}>Inicia sesión aquí</a></p>
+          <p>¿Ya tienes una cuenta? <a href="/userpu/login" className={styles.link}>Inicia sesión aquí</a></p>
         </div>
       </div>
     </div>

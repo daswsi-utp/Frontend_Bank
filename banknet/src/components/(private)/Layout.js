@@ -10,6 +10,7 @@ import {
   FiGrid,
   FiMenu,
   FiActivity,
+  FiDollarSign, // Icono para préstamos
 } from 'react-icons/fi';
 import './usercss/Layout.css';
 
@@ -44,6 +45,10 @@ const Layout = ({ children, setActiveView }) => {
           <div className="option" onClick={() => setActiveView('movimientos')}>
             <FiActivity className="option-icon" />
             <span>Movimientos</span>
+          </div>
+          <div className="option" onClick={() => setActiveView('loans')}>
+            <FiDollarSign className="option-icon" />
+            <span>Préstamos</span>
           </div>
         </div>
       </div>

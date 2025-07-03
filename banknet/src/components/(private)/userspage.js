@@ -46,8 +46,8 @@ const MainView = () => {
         return <Services />;
       case 'movimientos':
         return <Movimientos />;
-      case 'Prestamos': // ✅ Nueva opción para préstamos
-        return <Loans />;
+      case 'loans': // ✅ Este valor sí coincide con el menú
+      return <Loans />;
       default:
         return <Profile />;
     }

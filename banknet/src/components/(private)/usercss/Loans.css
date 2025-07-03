@@ -1,18 +1,18 @@
-.services-container {
+.loans-container {
   padding: 20px 0;
 }
 
-.services-header {
+.loans-header {
   margin-bottom: 30px;
 }
 
-.services-header h2 {
+.loans-header h2 {
   color: #4392F1;
   font-weight: 600;
   margin-bottom: 20px;
 }
 
-.services-form {
+.loans-form {
   margin-top: 20px;
 }
 
@@ -87,8 +87,6 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
 }
 
 .edit-button:hover {
